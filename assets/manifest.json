@@ -1,0 +1,50 @@
+{
+  "font": "Geist, SIL OFL 1.1",
+  "font_sha256": "73894e0448cae90a92b6c2f8732b7bb9acb7b94c418bff559dad4a18e1de9659",
+  "renderer": "rsvg-convert; text converted to paths with fontTools",
+  "artwork": "Original vector geometry; no captured user media",
+  "files": [
+    {
+      "name": "header",
+      "width": 1600,
+      "height": 500,
+      "svg_sha256": "273646d728a881641d787018b3f7af6493a519d67fb33ff69e88b76eec0adeec",
+      "png_sha256": "7b21d036e57f0421c673b903e41ca134fbe1b0770f93de69ac15153634a2f19f"
+    },
+    {
+      "name": "social-landscape",
+      "width": 1600,
+      "height": 900,
+      "svg_sha256": "6ea37039ea7c7b6b49519145ea2e5d14456cb1f92c45a3e56378ed2e37c296ad",
+      "png_sha256": "9a4eb37aad5922c4e9953bcbb4ed334c71a020f30fc9070ce904ae4d1555a2f6"
+    },
+    {
+      "name": "social-portrait",
+      "width": 1080,
+      "height": 1920,
+      "svg_sha256": "89c64b98162e73febf49df17dfade09978f20b918af22231d9a750c02f23b337",
+      "png_sha256": "1eedce2067d80e3cf0470d55fe0aa26b69adc51ce26eb71f5624962ceec8963c"
+    },
+    {
+      "name": "social-square",
+      "width": 1080,
+      "height": 1080,
+      "svg_sha256": "0828bb28dea5ffe0392cf4bb6dbbe1d3ba37e0751def07dcf816b106c421106e",
+      "png_sha256": "f0edc162293277aa451bacc2bb06c3c907275d52e9a7344ffdcb307970d18ada"
+    },
+    {
+      "name": "install-infographic",
+      "width": 1600,
+      "height": 900,
+      "svg_sha256": "80e9f9daecbaa1eb922958729a4b7db70bc120b24e3cb56a569766846c84628e",
+      "png_sha256": "844cca4f62abdeecba0c630ff2bece1acb8248213cacd5ce146ec38494384dc1"
+    },
+    {
+      "name": "processing-infographic",
+      "width": 1600,
+      "height": 900,
+      "svg_sha256": "9b09c2ba4c70b9b1eba6b0e8544c6182ebac340e2a6271801e93def61f08cf77",
+      "png_sha256": "6da10e266d0ea5f72fb7b600a3a87d4f51781a4ced3e7f808edca12c0405f737"
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+AndroidHiddenApiBypass 6.1
+Copyright 2021-2025 LSPosed
+Apache License 2.0
+https://github.com/LSPosed/AndroidHiddenApiBypass
+Upstream classes.jar is unmodified.

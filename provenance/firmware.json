@@ -1,0 +1,17 @@
+{
+  "build": "Asteroids_C5.0-260915-2123",
+  "source": "https://github.com/spike0en/nothing_archive",
+  "notice": "Firmware images are property of Nothing Technology Limited. OTA extraction, partition image generation and archiving provided by Nothing Archive.",
+  "parts": {
+    "Asteroids_C5.0-260915-2123-image-logical.7z.001": "334d1139e8cfdd28a364895d4ab3f35fcd5ffcc531ddd755aa87e871bfbd63dd",
+    "Asteroids_C5.0-260915-2123-image-logical.7z.002": "6e387133dda28a0562ed40fb94f01413a01c0985d826136ebc531e40a81ef0da",
+    "Asteroids_C5.0-260915-2123-image-logical.7z.003": "648f5ccf4553c6004c41c037f7f92669a7b8cd3acabb91329d9b066835da2df6"
+  },
+  "images": {
+    "system_ext": "5749d4020a7d9934be1c138c4d51ca713029715353204b5a778fd80df0957a87",
+    "vendor": "ed348c6b175e8b6d83660598ada54dd7d4058e42ec6270f53a1c6881da8de0e4",
+    "system": "1ab43679b03aa5ed1fae3b140915cd20b59afc28deeef4a40ca39a6bbc63e639",
+    "product": "5cbcdfce2cd2d3b2cfc7e69e548dbcce8b85dfaea001715d8d471e699d6c02b7",
+    "odm": "af635cce9057ace9fe81afa55d0135ccc77ae2998cfce2814d4ec5a885db1b15"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "original_apk_sha256": "89fb2557710f5f858870d4af84e33ffd56c9ffe62127a59962541e8f81ebab59",
+  "factory_apk_sha256": "8793db86987f9736f5ce1f9a2e6287693ee259f50490416bd478e50c436cb620",
+  "factory_version": "16.0.01.27.00",
+  "release_apk_sha256": "00dd9b077e604fc1482f84085169661bd5849f8373d760672a2f683003ef83ac",
+  "apktool": "3.0.3",
+  "jadx": "1.5.6",
+  "build_tools": "36.0.0",
+  "android_api": 36,
+  "java_release": 8
+}

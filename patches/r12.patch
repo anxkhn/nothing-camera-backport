@@ -1,0 +1,1315 @@
+--- a/AndroidManifest.xml
++++ b/AndroidManifest.xml
+@@ -1,5 +1,5 @@
+ <?xml version="1.0" encoding="utf-8"?>
+-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:compileSdkVersion="37" android:compileSdkVersionCodename="17" package="com.nothing.camera" platformBuildVersionCode="37" platformBuildVersionName="17">
++<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:compileSdkVersion="37" android:compileSdkVersionCodename="17" package="com.anx.camera.experimental" platformBuildVersionCode="37" platformBuildVersionName="17">
+     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+     <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY"/>
+     <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS"/>
+@@ -35,6 +35,7 @@
+     <uses-permission android:name="com.nothing.ketchum.permission.ENABLE"/>
+     <uses-permission android:name="com.nothing.ntessentialrecorder.permission.SELF"/>
+     <queries>
++        <package android:name="com.nothing.camera"/>
+         <package android:name="com.google.android.googlequicksearchbox"/>
+         <package android:name="com.google.android.apps.photos"/>
+         <package android:name="com.nothing.gallery"/>
+@@ -97,11 +98,13 @@
+     <uses-permission android:name="com.nothing.permission.BIND_CARD_SERVICE"/>
+     <uses-permission android:name="android.permission.WAKE_LOCK"/>
+     <uses-permission android:name="com.nothing.soundrecorder.permission.RECORD"/>
+-    <permission android:name="com.nothing.camera.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" android:protectionLevel="signature"/>
+-    <uses-permission android:name="com.nothing.camera.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"/>
+-    <application android:allowBackup="true" android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:backupAgent="com.nothing.camera.activity.CameraBackUpAgent" android:extractNativeLibs="false" android:fullBackupOnly="true" android:hardwareAccelerated="true" android:icon="@mipmap/ic_launcher_camera" android:label="@string/app_name" android:largeHeap="true" android:name="com.nothing.camera.app.CameraApp" android:restoreAnyVersion="true" android:roundIcon="@mipmap/ic_launcher_camera" android:supportsRtl="true">
++    <permission android:name="com.anx.camera.experimental.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" android:protectionLevel="signature"/>
++    <uses-permission android:name="com.anx.camera.experimental.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"/>
++    <instrumentation android:name="com.anx.camera.bridge.CodecInstrumentation" android:targetPackage="com.anx.camera.experimental" android:label="NOS4.1 bridge codec checks"/>
++    <application android:allowBackup="true" android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:backupAgent="com.nothing.camera.activity.CameraBackUpAgent" android:extractNativeLibs="false" android:fullBackupOnly="true" android:hardwareAccelerated="true" android:icon="@mipmap/ic_launcher_camera" android:label="Nothing Camera Beta Port" android:largeHeap="true" android:name="com.nothing.camera.app.CameraApp" android:restoreAnyVersion="true" android:roundIcon="@mipmap/ic_launcher_camera" android:supportsRtl="true">
+         <profileable android:shell="false"/>
+-        <provider android:authorities="com.nothing.camera.androidx-startup" android:exported="false" android:name="androidx.startup.InitializationProvider">
++        <provider android:name="com.anx.camera.bridge.PhotoOutputProvider" android:authorities="com.anx.camera.experimental.bridgeoutput" android:exported="false" android:grantUriPermissions="true"/>
++        <provider android:authorities="com.anx.camera.experimental.androidx-startup" android:exported="false" android:name="androidx.startup.InitializationProvider">
+             <meta-data android:name="app.rive.runtime.kotlin.RiveInitializer" android:value="androidx.startup"/>
+             <meta-data android:name="androidx.work.WorkManagerInitializer" android:value="androidx.startup"/>
+             <meta-data android:name="androidx.emoji2.text.EmojiCompatInitializer" android:value="androidx.startup"/>
+@@ -201,12 +204,12 @@
+         <uses-native-library android:name="libanc_single_rt_bokeh.so" android:required="false"/>
+         <uses-native-library android:name="libwa_rtdof.so" android:required="false"/>
+         <uses-native-library android:name="libanc_scene.so" android:required="false"/>
+-        <provider android:authorities="com.nothing.camera.provider.SpecialTypeProvider" android:exported="true" android:grantUriPermissions="true" android:name="com.nothing.camera.provider.SpecialTypeProvider" android:syncable="false">
++        <provider android:authorities="com.anx.camera.experimental.provider.SpecialTypeProvider" android:exported="true" android:grantUriPermissions="true" android:name="com.nothing.camera.provider.SpecialTypeProvider" android:syncable="false">
+             <intent-filter>
+                 <action android:name="com.google.android.apps.photos.OEM_PROVIDER"/>
+             </intent-filter>
+         </provider>
+-        <provider android:authorities="com.nothing.camera.FileProvider" android:exported="false" android:grantUriPermissions="true" android:name="androidx.core.content.FileProvider">
++        <provider android:authorities="com.anx.camera.experimental.FileProvider" android:exported="false" android:grantUriPermissions="true" android:name="androidx.core.content.FileProvider">
+             <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/provider_paths"/>
+         </provider>
+         <activity android:excludeFromRecents="true" android:exported="true" android:launchMode="singleTask" android:name="com.nothing.camera.activity.PresetAcceptActivity" android:theme="@style/Theme.AiWidget.TransparentDialog">
+@@ -222,14 +225,14 @@
+                 <data android:host="camera" android:pathPattern=".*" android:scheme="preset"/>
+             </intent-filter>
+         </activity>
+-        <activity android:allowTaskReparenting="false" android:configChanges="mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale" android:exported="true" android:launchMode="singleTask" android:name="com.nothing.camera.activity.WidgetCameraActivity" android:resizeableActivity="false" android:screenOrientation="portrait" android:taskAffinity="com.nothing.camera.activity.CameraActivity" android:theme="@style/ThemeCameraBase" android:visibleToInstantApps="true" android:windowSoftInputMode="stateAlwaysHidden|adjustNothing">
++        <activity android:allowTaskReparenting="false" android:configChanges="mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale" android:exported="true" android:launchMode="singleTask" android:name="com.nothing.camera.activity.WidgetCameraActivity" android:resizeableActivity="false" android:screenOrientation="portrait" android:taskAffinity="com.anx.camera.experimental.activity.CameraActivity" android:theme="@style/ThemeCameraBase" android:visibleToInstantApps="true" android:windowSoftInputMode="stateAlwaysHidden|adjustNothing">
+             <intent-filter>
+                 <category android:name="android.intent.category.DEFAULT"/>
+                 <category android:name="android.intent.category.LAUNCHER"/>
+             </intent-filter>
+             <meta-data android:name="android.supports_size_changes" android:value="true"/>
+         </activity>
+-        <activity android:allowTaskReparenting="false" android:clearTaskOnLaunch="false" android:configChanges="mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale" android:exported="true" android:launchMode="singleTask" android:name="com.nothing.camera.activity.CameraActivity" android:resizeableActivity="false" android:screenOrientation="portrait" android:taskAffinity="com.nothing.camera.activity.CameraActivity" android:theme="@style/ThemeCameraBase" android:visibleToInstantApps="true" android:windowSoftInputMode="stateAlwaysHidden|adjustNothing">
++        <activity android:allowTaskReparenting="false" android:clearTaskOnLaunch="false" android:configChanges="mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale" android:exported="true" android:launchMode="singleTask" android:name="com.nothing.camera.activity.CameraActivity" android:resizeableActivity="false" android:screenOrientation="portrait" android:taskAffinity="com.anx.camera.experimental.activity.CameraActivity" android:theme="@style/ThemeCameraBase" android:visibleToInstantApps="true" android:windowSoftInputMode="stateAlwaysHidden|adjustNothing">
+             <intent-filter>
+                 <action android:name="android.intent.action.MAIN"/>
+                 <action android:name="com.nothing.camera.WIDGET_CAMERA"/>
+@@ -257,26 +260,26 @@
+             <meta-data android:name="android.supports_size_changes" android:value="true"/>
+             <meta-data android:name="com.nothing.camera.offline.ufs" android:value="true"/>
+         </activity>
+-        <activity android:allowTaskReparenting="true" android:configChanges="mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" android:directBootAware="true" android:exported="true" android:launchMode="singleTask" android:name="com.nothing.camera.activity.VoiceCameraActivity" android:resizeableActivity="false" android:screenOrientation="portrait" android:taskAffinity="com.nothing.camera.activity.CameraActivity" android:theme="@style/ThemeCameraBase">
++        <activity android:allowTaskReparenting="true" android:configChanges="mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" android:directBootAware="true" android:exported="true" android:launchMode="singleTask" android:name="com.nothing.camera.activity.VoiceCameraActivity" android:resizeableActivity="false" android:screenOrientation="portrait" android:taskAffinity="com.anx.camera.experimental.activity.CameraActivity" android:theme="@style/ThemeCameraBase">
+             <intent-filter>
+                 <action android:name="android.media.action.VIDEO_CAMERA"/>
+                 <category android:name="android.intent.category.DEFAULT"/>
+                 <category android:name="android.intent.category.VOICE"/>
+             </intent-filter>
+         </activity>
+-        <activity android:clearTaskOnLaunch="true" android:configChanges="mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" android:directBootAware="true" android:exported="true" android:launchMode="singleTask" android:name="com.nothing.camera.activity.CameraSettingsDialogueActivity" android:resizeableActivity="false" android:screenOrientation="portrait" android:taskAffinity="com.nothing.camera.activity.CameraSettingsDialogueActivity" android:theme="@style/ThemeCameraBase">
++        <activity android:clearTaskOnLaunch="true" android:configChanges="mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" android:directBootAware="true" android:exported="true" android:launchMode="singleTask" android:name="com.nothing.camera.activity.CameraSettingsDialogueActivity" android:resizeableActivity="false" android:screenOrientation="portrait" android:taskAffinity="com.anx.camera.experimental.activity.CameraSettingsDialogueActivity" android:theme="@style/ThemeCameraBase">
+             <intent-filter>
+                 <action android:name="com.google.camera.action.LOCATION_SETTINGS"/>
+                 <category android:name="android.intent.category.DEFAULT"/>
+             </intent-filter>
+         </activity>
+-        <activity android:allowTaskReparenting="true" android:clearTaskOnLaunch="true" android:configChanges="mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" android:exported="false" android:launchMode="singleTop" android:name="com.nothing.camera.activity.CameraShortCutActivity" android:resizeableActivity="false" android:screenOrientation="portrait" android:taskAffinity="com.nothing.camera.activity.CameraActivity" android:theme="@style/ThemeCameraBase" android:visibleToInstantApps="true" android:windowSoftInputMode="stateAlwaysHidden|adjustNothing">
++        <activity android:allowTaskReparenting="true" android:clearTaskOnLaunch="true" android:configChanges="mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" android:exported="false" android:launchMode="singleTop" android:name="com.nothing.camera.activity.CameraShortCutActivity" android:resizeableActivity="false" android:screenOrientation="portrait" android:taskAffinity="com.anx.camera.experimental.activity.CameraActivity" android:theme="@style/ThemeCameraBase" android:visibleToInstantApps="true" android:windowSoftInputMode="stateAlwaysHidden|adjustNothing">
+             <intent-filter>
+                 <action android:name="android.media.action.SHORTCUT_CAMERA"/>
+                 <category android:name="android.intent.category.DEFAULT"/>
+             </intent-filter>
+         </activity>
+-        <activity android:clearTaskOnLaunch="true" android:configChanges="mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" android:excludeFromRecents="true" android:exported="true" android:launchMode="singleTask" android:name="com.nothing.camera.activity.SecureCameraActivity" android:resizeableActivity="false" android:screenOrientation="portrait" android:taskAffinity="com.nothing.camera.activity.SecureCameraActivity" android:theme="@style/ThemeCameraBase" android:visibleToInstantApps="true" android:windowSoftInputMode="stateAlwaysHidden|adjustNothing">
++        <activity android:clearTaskOnLaunch="true" android:configChanges="mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" android:excludeFromRecents="true" android:exported="true" android:launchMode="singleTask" android:name="com.nothing.camera.activity.SecureCameraActivity" android:resizeableActivity="false" android:screenOrientation="portrait" android:taskAffinity="com.anx.camera.experimental.activity.SecureCameraActivity" android:theme="@style/ThemeCameraBase" android:visibleToInstantApps="true" android:windowSoftInputMode="stateAlwaysHidden|adjustNothing">
+             <intent-filter>
+                 <action android:name="android.media.action.STILL_IMAGE_CAMERA_SECURE"/>
+                 <category android:name="android.intent.category.DEFAULT"/>
+@@ -305,33 +308,33 @@
+             <meta-data android:name="com.nothing.glyph.toy.summary" android:resource="@string/glyph_mirror_summary"/>
+             <meta-data android:name="com.nothing.glyph.toy.longpress" android:value="1"/>
+         </service>
+-        <provider android:authorities="com.nothing.camera.authority.APP_CAMERA.shortcut" android:enabled="true" android:exported="true" android:name="com.nothing.common.shortcutwidget.provider.CameraWidgetProvider">
++        <provider android:authorities="com.anx.camera.experimental.authority.APP_CAMERA.shortcut" android:enabled="true" android:exported="true" android:name="com.nothing.common.shortcutwidget.provider.CameraWidgetProvider">
+             <intent-filter>
+                 <action android:name="android.nothing.action.APPCARD_UPDATE"/>
+             </intent-filter>
+             <meta-data android:name="com.nothing.card" android:resource="@xml/camera_shortcut_card_config"/>
+         </provider>
+-        <activity android:clearTaskOnLaunch="true" android:configChanges="mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" android:directBootAware="true" android:exported="true" android:launchMode="singleTask" android:name="com.nothing.camera.preset.create.CreatePresetActivity" android:resizeableActivity="false" android:screenOrientation="portrait" android:taskAffinity="com.nothing.camera.activity.CameraActivity" android:theme="@style/ThemeCameraBase">
+-            <intent-filter>
+-                <category android:name="android.intent.category.DEFAULT"/>
+-            </intent-filter>
+-        </activity>
+-        <activity android:clearTaskOnLaunch="true" android:configChanges="mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" android:directBootAware="true" android:exported="true" android:launchMode="singleTask" android:name="com.nothing.camera.preset.PresetSettingsActivity" android:resizeableActivity="false" android:screenOrientation="portrait" android:taskAffinity="com.nothing.camera.activity.CameraActivity" android:theme="@style/ThemeCameraBase">
+-            <intent-filter>
+-                <category android:name="android.intent.category.DEFAULT"/>
+-            </intent-filter>
+-        </activity>
+-        <activity android:clearTaskOnLaunch="true" android:configChanges="mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" android:directBootAware="true" android:exported="true" android:launchMode="singleTask" android:name="com.nothing.camera.preset.home.PresetsAboutActivity" android:resizeableActivity="false" android:screenOrientation="portrait" android:taskAffinity="com.nothing.camera.activity.CameraActivity" android:theme="@style/ThemeCameraBase">
+-            <intent-filter>
+-                <category android:name="android.intent.category.DEFAULT"/>
+-            </intent-filter>
+-        </activity>
+-        <activity android:allowTaskReparenting="false" android:clearTaskOnLaunch="false" android:configChanges="mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" android:exported="true" android:name="com.nothing.camera.activity.SettingsWrapperActivity" android:resizeableActivity="false" android:screenOrientation="portrait" android:taskAffinity="com.nothing.camera.activity.CameraActivity" android:theme="@style/ThemeCameraBase" android:visibleToInstantApps="true">
+-            <intent-filter>
+-                <category android:name="android.intent.category.DEFAULT"/>
+-            </intent-filter>
+-        </activity>
+-        <activity android:clearTaskOnLaunch="true" android:configChanges="mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" android:directBootAware="true" android:exported="true" android:launchMode="singleTask" android:name="com.nothing.camera.preset.widget.CameraPresetWidgetActivity" android:resizeableActivity="false" android:screenOrientation="portrait" android:taskAffinity="com.nothing.camera.activity.CameraActivity" android:theme="@style/ThemeCameraBase">
++        <activity android:clearTaskOnLaunch="true" android:configChanges="mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" android:directBootAware="true" android:exported="true" android:launchMode="singleTask" android:name="com.nothing.camera.preset.create.CreatePresetActivity" android:resizeableActivity="false" android:screenOrientation="portrait" android:taskAffinity="com.anx.camera.experimental.activity.CameraActivity" android:theme="@style/ThemeCameraBase">
++            <intent-filter>
++                <category android:name="android.intent.category.DEFAULT"/>
++            </intent-filter>
++        </activity>
++        <activity android:clearTaskOnLaunch="true" android:configChanges="mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" android:directBootAware="true" android:exported="true" android:launchMode="singleTask" android:name="com.nothing.camera.preset.PresetSettingsActivity" android:resizeableActivity="false" android:screenOrientation="portrait" android:taskAffinity="com.anx.camera.experimental.activity.CameraActivity" android:theme="@style/ThemeCameraBase">
++            <intent-filter>
++                <category android:name="android.intent.category.DEFAULT"/>
++            </intent-filter>
++        </activity>
++        <activity android:clearTaskOnLaunch="true" android:configChanges="mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" android:directBootAware="true" android:exported="true" android:launchMode="singleTask" android:name="com.nothing.camera.preset.home.PresetsAboutActivity" android:resizeableActivity="false" android:screenOrientation="portrait" android:taskAffinity="com.anx.camera.experimental.activity.CameraActivity" android:theme="@style/ThemeCameraBase">
++            <intent-filter>
++                <category android:name="android.intent.category.DEFAULT"/>
++            </intent-filter>
++        </activity>
++        <activity android:allowTaskReparenting="false" android:clearTaskOnLaunch="false" android:configChanges="mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" android:exported="true" android:name="com.nothing.camera.activity.SettingsWrapperActivity" android:resizeableActivity="false" android:screenOrientation="portrait" android:taskAffinity="com.anx.camera.experimental.activity.CameraActivity" android:theme="@style/ThemeCameraBase" android:visibleToInstantApps="true">
++            <intent-filter>
++                <category android:name="android.intent.category.DEFAULT"/>
++            </intent-filter>
++        </activity>
++        <activity android:clearTaskOnLaunch="true" android:configChanges="mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" android:directBootAware="true" android:exported="true" android:launchMode="singleTask" android:name="com.nothing.camera.preset.widget.CameraPresetWidgetActivity" android:resizeableActivity="false" android:screenOrientation="portrait" android:taskAffinity="com.anx.camera.experimental.activity.CameraActivity" android:theme="@style/ThemeCameraBase">
+             <intent-filter>
+                 <category android:name="android.intent.category.DEFAULT"/>
+             </intent-filter>
+@@ -340,7 +343,7 @@
+                 <category android:name="android.intent.category.DEFAULT"/>
+             </intent-filter>
+         </activity>
+-        <activity android:clearTaskOnLaunch="true" android:configChanges="mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" android:directBootAware="true" android:exported="true" android:launchMode="singleTask" android:name="com.nothing.camera.preset.about.PresetAboutActivity" android:resizeableActivity="false" android:screenOrientation="portrait" android:taskAffinity="com.nothing.camera.activity.CameraActivity" android:theme="@style/ThemeCameraBase">
++        <activity android:clearTaskOnLaunch="true" android:configChanges="mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" android:directBootAware="true" android:exported="true" android:launchMode="singleTask" android:name="com.nothing.camera.preset.about.PresetAboutActivity" android:resizeableActivity="false" android:screenOrientation="portrait" android:taskAffinity="com.anx.camera.experimental.activity.CameraActivity" android:theme="@style/ThemeCameraBase">
+             <intent-filter>
+                 <category android:name="android.intent.category.DEFAULT"/>
+             </intent-filter>
+@@ -354,12 +357,12 @@
+                 <action android:name="com.nothing.ntessentialrecorder.action.RECORD_CUSTOMIZED_RESULT"/>
+             </intent-filter>
+         </receiver>
+-        <service android:enabled="true" android:exported="true" android:foregroundServiceType="camera" android:name="com.nothing.algolib.cameraufs.UFSService" android:process="com.camera.ufs.service"/>
+-        <provider android:authorities="com.nothing.camera.ntlogger" android:exported="true" android:name="com.nothing.common.provider.NTLogContentProvider" android:permission="com.nothing.permission.READ_LOG"/>
+-        <provider android:authorities="com.nothing.camera.ntwidget.fileprovider" android:exported="false" android:grantUriPermissions="true" android:name="com.nothing.cardclient.WidgetFileProvider">
++        <service android:enabled="true" android:exported="true" android:foregroundServiceType="camera" android:name="com.nothing.algolib.cameraufs.UFSService" android:process=":ufs"/>
++        <provider android:authorities="com.anx.camera.experimental.ntlogger" android:exported="true" android:name="com.nothing.common.provider.NTLogContentProvider" android:permission="com.nothing.permission.READ_LOG"/>
++        <provider android:authorities="com.anx.camera.experimental.ntwidget.fileprovider" android:exported="false" android:grantUriPermissions="true" android:name="com.nothing.cardclient.WidgetFileProvider">
+             <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/ntwidget_fileprovider"/>
+         </provider>
+-        <provider android:authorities="com.nothing.camera.ntwidget.filepermissionprovider" android:enabled="true" android:exported="true" android:name="com.nothing.cardclient.FilePermissionProvider" android:permission="com.nothing.permission.BIND_CARD_SERVICE"/>
++        <provider android:authorities="com.anx.camera.experimental.ntwidget.filepermissionprovider" android:enabled="true" android:exported="true" android:name="com.nothing.cardclient.FilePermissionProvider" android:permission="com.nothing.permission.BIND_CARD_SERVICE"/>
+         <service android:directBootAware="false" android:enabled="@bool/enable_system_alarm_service_default" android:exported="false" android:name="androidx.work.impl.background.systemalarm.SystemAlarmService"/>
+         <service android:directBootAware="false" android:enabled="@bool/enable_system_job_service_default" android:exported="true" android:name="androidx.work.impl.background.systemjob.SystemJobService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+         <service android:directBootAware="false" android:enabled="@bool/enable_system_foreground_service_default" android:exported="false" android:name="androidx.work.impl.foreground.SystemForegroundService"/>
+@@ -412,7 +415,7 @@
+             <meta-data android:name="com.google.firebase.components:com.google.mlkit.vision.common.internal.VisionCommonRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+             <meta-data android:name="com.google.firebase.components:com.google.mlkit.common.internal.CommonComponentRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+         </service>
+-        <provider android:authorities="com.nothing.camera.mlkitinitprovider" android:exported="false" android:initOrder="99" android:name="com.google.mlkit.common.internal.MlKitInitProvider"/>
++        <provider android:authorities="com.anx.camera.experimental.mlkitinitprovider" android:exported="false" android:initOrder="99" android:name="com.google.mlkit.common.internal.MlKitInitProvider"/>
+         <activity android:exported="false" android:name="com.google.android.gms.common.api.GoogleApiActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+         <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version"/>
+         <uses-library android:name="androidx.window.extensions" android:required="false"/>
+@@ -431,7 +434,7 @@
+                 <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION"/>
+             </intent-filter>
+         </receiver>
+-        <provider android:authorities="com.nothing.camera.com.squareup.picasso" android:exported="false" android:name="com.squareup.picasso.PicassoProvider"/>
++        <provider android:authorities="com.anx.camera.experimental.com.squareup.picasso" android:exported="false" android:name="com.squareup.picasso.PicassoProvider"/>
+         <service android:directBootAware="true" android:exported="false" android:name="androidx.room.MultiInstanceInvalidationService"/>
+         <service android:exported="false" android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery">
+             <meta-data android:name="backend:com.google.android.datatransport.cct.CctBackendFactory" android:value="cct"/>
+--- a/res/values-af/strings.xml
++++ b/res/values-af/strings.xml
+@@ -669,7 +669,7 @@
+     <string name="pref_voice_entry_on">aan</string>
+     <string name="preference_copied">\"%1$s\" is na knipbord gekopieer.</string>
+     <string name="preview_photos">"Voorskou foto's"</string>
+-    <string name="provider_authority">com.nothing.camera.provider.SpecialTypeProvider</string>
++    <string name="provider_authority">com.anx.camera.experimental.provider.SpecialTypeProvider</string>
+     <string name="radio_switch_to_beautyvideo">Skoonheidsvideo</string>
+     <string name="radio_switch_to_chromaflash">Slimflits</string>
+     <string name="radio_switch_to_clearsight">HelderSig</string>
+--- a/res/values-ar/strings.xml
++++ b/res/values-ar/strings.xml
+@@ -1337,7 +1337,7 @@
+     <string name="preset_valid_qr_code_message">يرجى المحاولة مجددًا برمز QR آخر.</string>
+     <string name="preset_valid_qr_code_title">لا يمكن العثور على رمز QR صالح</string>
+     <string name="preview_photos">معاينة الصور</string>
+-    <string name="provider_authority">com.nothing.camera.provider.SpecialTypeProvider</string>
++    <string name="provider_authority">com.anx.camera.experimental.provider.SpecialTypeProvider</string>
+     <string name="qr_wifi_message">تم اكتشاف رمز QR لشبكة Wi-Fi. هل تريد الاتصال الآن؟</string>
+     <string name="qr_wifi_title">الاتصال بشبكة Wi-Fi؟</string>
+     <string name="radio_switch_to_beautyvideo">فيديو الجمال</string>
+--- a/res/values-b+sr+Cyrl/strings.xml
++++ b/res/values-b+sr+Cyrl/strings.xml
+@@ -1132,7 +1132,7 @@
+     <string name="preset_update">Ажурирање</string>
+     <string name="preset_valid_qr_code_message">Покушајте поново са неким другим QR кодом.</string>
+     <string name="preset_valid_qr_code_title">Нисмо могли да нађемо ниједан важећи QR код</string>
+-    <string name="provider_authority">com.nothing.camera.provider.SpecialTypeProvider</string>
++    <string name="provider_authority">com.anx.camera.experimental.provider.SpecialTypeProvider</string>
+     <string name="qr_wifi_message">Откривен је QР код за Wi-Fi. Желите ли да се сада повежете?</string>
+     <string name="qr_wifi_title">Повежите се са Wi-Fi мрежом</string>
+     <string name="radio_switch_to_beautyvideo">Уљепшавање видео записа</string>
+--- a/res/values-b+sr+Latn/strings.xml
++++ b/res/values-b+sr+Latn/strings.xml
+@@ -1329,7 +1329,7 @@
+     <string name="preset_valid_qr_code_message">Pokušajte ponovo sa nekim drugim QR kodom.</string>
+     <string name="preset_valid_qr_code_title">Nismo mogli da nađemo nijedan važeći QR kod</string>
+     <string name="preview_photos">Pregled fotografija</string>
+-    <string name="provider_authority">com.nothing.camera.provider.SpecialTypeProvider</string>
++    <string name="provider_authority">com.anx.camera.experimental.provider.SpecialTypeProvider</string>
+     <string name="qr_wifi_message">Otkriven je QR kod za Wi-Fi. Želite li da se sada povežete?</string>
+     <string name="qr_wifi_title">Povežite se sa Wi-Fi mrežom</string>
+     <string name="radio_switch_to_beautyvideo">Video zapis sa ulepšavanjem</string>
+--- a/res/values-be/strings.xml
++++ b/res/values-be/strings.xml
+@@ -1332,7 +1332,7 @@
+     <string name="preset_update">Абнавіць</string>
+     <string name="preset_valid_qr_code_message">Паўтарыце спробу, скарыстаўшы іншы QR-код.</string>
+     <string name="preset_valid_qr_code_title">Не ўдалося знайсці сапраўдны QR-код</string>
+-    <string name="provider_authority">com.nothing.camera.provider.SpecialTypeProvider</string>
++    <string name="provider_authority">com.anx.camera.experimental.provider.SpecialTypeProvider</string>
+     <string name="qr_wifi_message">Выяўлены QR-код для падключэння па Wi-Fi. Падключыцца?</string>
+     <string name="qr_wifi_title">Падключэнне да Wi-Fi</string>
+     <string name="radio_switch_to_beautyvideo">Відэа з прыгажосцю твару</string>
+--- a/res/values-bg/strings.xml
++++ b/res/values-bg/strings.xml
+@@ -1332,7 +1332,7 @@
+     <string name="preset_update">Обновяване</string>
+     <string name="preset_valid_qr_code_message">Опитайте пак с друг QR код.</string>
+     <string name="preset_valid_qr_code_title">Не беше намерен валиден QR код</string>
+-    <string name="provider_authority">com.nothing.camera.provider.SpecialTypeProvider</string>
++    <string name="provider_authority">com.anx.camera.experimental.provider.SpecialTypeProvider</string>
+     <string name="qr_wifi_message">Открит е Wi-Fi QR код. Свържете се сега?</string>
+     <string name="qr_wifi_title">Свързване с Wi-Fi</string>
+     <string name="radio_switch_to_beautyvideo">Разкрасяване при видеозаснемане</string>
+--- a/res/values-cs/strings.xml
++++ b/res/values-cs/strings.xml
+@@ -1337,7 +1337,7 @@
+     <string name="preset_valid_qr_code_message">Zkuste to znovu s jiným QR kódem.</string>
+     <string name="preset_valid_qr_code_title">Nebyl nalezen žádný platný QR kód</string>
+     <string name="preview_photos">Náhled fotografii</string>
+-    <string name="provider_authority">com.nothing.camera.provider.SpecialTypeProvider</string>
++    <string name="provider_authority">com.anx.camera.experimental.provider.SpecialTypeProvider</string>
+     <string name="qr_wifi_message">Byl detekován QR kód sítě Wi-Fi. Chcete se nyní připojit?</string>
+     <string name="qr_wifi_title">Připojení k síti Wi-Fi</string>
+     <string name="radio_switch_to_beautyvideo">Zkrášlující video</string>
+--- a/res/values-da/strings.xml
++++ b/res/values-da/strings.xml
+@@ -1337,7 +1337,7 @@
+     <string name="preset_valid_qr_code_message">Prøv igen med en anden QR-kode.</string>
+     <string name="preset_valid_qr_code_title">Vi kunne ikke finde nogen gyldig QR-kode</string>
+     <string name="preview_photos">Se eksempler på billeder</string>
+-    <string name="provider_authority">com.nothing.camera.provider.SpecialTypeProvider</string>
++    <string name="provider_authority">com.anx.camera.experimental.provider.SpecialTypeProvider</string>
+     <string name="qr_wifi_message">QR-kode til Wi-Fi fundet. Opret forbindelse nu?</string>
+     <string name="qr_wifi_title">Tilslut til Wi-Fi</string>
+     <string name="radio_switch_to_beautyvideo">Videoforskønnelse</string>
+--- a/res/values-de/strings.xml
++++ b/res/values-de/strings.xml
+@@ -1337,7 +1337,7 @@
+     <string name="preset_valid_qr_code_message">Bitte versuchen Sie es mit einem anderen QR-Code erneut.</string>
+     <string name="preset_valid_qr_code_title">Wir konnten keinen gültigen QR-Code finden</string>
+     <string name="preview_photos">Fotovorschau</string>
+-    <string name="provider_authority">com.nothing.camera.provider.SpecialTypeProvider</string>
++    <string name="provider_authority">com.anx.camera.experimental.provider.SpecialTypeProvider</string>
+     <string name="qr_wifi_message">WLAN-QR-Code erkannt. Jetzt verbinden?</string>
+     <string name="qr_wifi_title">Mit WLAN verbinden</string>
+     <string name="radio_switch_to_beautyvideo">Schönes Video</string>
+--- a/res/values-el/strings.xml
++++ b/res/values-el/strings.xml
+@@ -1337,7 +1337,7 @@
+     <string name="preset_valid_qr_code_message">Δοκιμάστε ξανά με άλλον κωδικό QR.</string>
+     <string name="preset_valid_qr_code_title">Δεν μπορέσαμε να βρούμε έγκυρο κωδικό QR</string>
+     <string name="preview_photos">Προεπισκόπηση φωτογραφιών</string>
+-    <string name="provider_authority">com.nothing.camera.provider.SpecialTypeProvider</string>
++    <string name="provider_authority">com.anx.camera.experimental.provider.SpecialTypeProvider</string>
+     <string name="qr_wifi_message">Εντοπίστηκε κωδικός QR Wi-Fi. Σύνδεση τώρα;</string>
+     <string name="qr_wifi_title">Σύνδεση σε Wi-Fi</string>
+     <string name="radio_switch_to_beautyvideo">Καλλωπισμός βίντεο</string>
+--- a/res/values-en-rAU/strings.xml
++++ b/res/values-en-rAU/strings.xml
+@@ -1034,7 +1034,7 @@
+     <string name="preset_info_more">More information</string>
+     <string name="preset_info_try_now">Try now</string>
+     <string name="preset_mode_title">MODE</string>
+-    <string name="provider_authority">com.nothing.camera.provider.SpecialTypeProvider</string>
++    <string name="provider_authority">com.anx.camera.experimental.provider.SpecialTypeProvider</string>
+     <string name="radio_switch_to_beautyvideo">Beauty Video</string>
+     <string name="radio_switch_to_chromaflash">Smart Flash</string>
+     <string name="radio_switch_to_clearsight">ClearSight</string>
+--- a/res/values-en-rGB/strings.xml
++++ b/res/values-en-rGB/strings.xml
+@@ -1110,7 +1110,7 @@
+     <string name="preset_info_more">More information</string>
+     <string name="preset_info_try_now">Try now</string>
+     <string name="preset_mode_title">MODE</string>
+-    <string name="provider_authority">com.nothing.camera.provider.SpecialTypeProvider</string>
++    <string name="provider_authority">com.anx.camera.experimental.provider.SpecialTypeProvider</string>
+     <string name="qr_wifi_message">Wi-Fi QR code detected. Connect now?</string>
+     <string name="qr_wifi_title">Connect to Wi-Fi</string>
+     <string name="radio_switch_to_beautyvideo">Beauty Video</string>
+--- a/res/values-en-rIN/strings.xml
++++ b/res/values-en-rIN/strings.xml
+@@ -1063,7 +1063,7 @@
+     <string name="preset_info_more">More information</string>
+     <string name="preset_info_try_now">Try now</string>
+     <string name="preset_mode_title">MODE</string>
+-    <string name="provider_authority">com.nothing.camera.provider.SpecialTypeProvider</string>
++    <string name="provider_authority">com.anx.camera.experimental.provider.SpecialTypeProvider</string>
+     <string name="radio_switch_to_beautyvideo">Beauty Video</string>
+     <string name="radio_switch_to_chromaflash">Smart Flash</string>
+     <string name="radio_switch_to_clearsight">ClearSight</string>
+--- a/res/values-en-rZA/strings.xml
++++ b/res/values-en-rZA/strings.xml
+@@ -926,7 +926,7 @@
+     <string name="preset_info_more">More information</string>
+     <string name="preset_info_try_now">Try now</string>
+     <string name="preset_mode_title">MODE</string>
+-    <string name="provider_authority">com.nothing.camera.provider.SpecialTypeProvider</string>
++    <string name="provider_authority">com.anx.camera.experimental.provider.SpecialTypeProvider</string>
+     <string name="radio_switch_to_beautyvideo">Beauty Video</string>
+     <string name="radio_switch_to_chromaflash">Smart Flash</string>
+     <string name="radio_switch_to_clearsight">ClearSight</string>
+--- a/res/values-es/strings.xml
++++ b/res/values-es/strings.xml
+@@ -1337,7 +1337,7 @@
+     <string name="preset_valid_qr_code_message">Vuelva a intentarlo con otro código QR.</string>
+     <string name="preset_valid_qr_code_title">No hemos podido encontrar ningún código QR válido</string>
+     <string name="preview_photos">Vista previa de fotos</string>
+-    <string name="provider_authority">com.nothing.camera.provider.SpecialTypeProvider</string>
++    <string name="provider_authority">com.anx.camera.experimental.provider.SpecialTypeProvider</string>
+     <string name="qr_wifi_message">Código QR de Wi-Fi detectado. ¿Conectarse ahora?</string>
+     <string name="qr_wifi_title">¿Conectarse a Wi-Fi?</string>
+     <string name="radio_switch_to_beautyvideo">Vídeo de Belleza</string>
+--- a/res/values-et/strings.xml
++++ b/res/values-et/strings.xml
+@@ -1332,7 +1332,7 @@
+     <string name="preset_update">Uuendus</string>
+     <string name="preset_valid_qr_code_message">Palun proovige uuesti teise QR-koodiga.</string>
+     <string name="preset_valid_qr_code_title">Me ei leidnud ühtegi kehtivat QR-koodi</string>
+-    <string name="provider_authority">com.nothing.camera.provider.SpecialTypeProvider</string>
++    <string name="provider_authority">com.anx.camera.experimental.provider.SpecialTypeProvider</string>
+     <string name="qr_wifi_message">Wi-Fi QR-kood tuvastatud. Kas ühendada kohe?</string>
+     <string name="qr_wifi_title">Kas ühendada Wi-Fi-ga</string>
+     <string name="radio_switch_to_beautyvideo">Iluvideo</string>
+--- a/res/values-fi/strings.xml
++++ b/res/values-fi/strings.xml
+@@ -1337,7 +1337,7 @@
+     <string name="preset_valid_qr_code_message">Yritä uudelleen eri QR-koodilla.</string>
+     <string name="preset_valid_qr_code_title">Kelvollista QR-koodia ei löytynyt</string>
+     <string name="preview_photos">Esikatsele kuvia</string>
+-    <string name="provider_authority">com.nothing.camera.provider.SpecialTypeProvider</string>
++    <string name="provider_authority">com.anx.camera.experimental.provider.SpecialTypeProvider</string>
+     <string name="qr_wifi_message">Wi-Fi-QR-koodi tunnistettu. Yhdistetäänkö nyt?</string>
+     <string name="qr_wifi_title">Muodosta Wi-Fi-yhteys</string>
+     <string name="radio_switch_to_beautyvideo">Kauneusvideo</string>
+--- a/res/values-fil/strings.xml
++++ b/res/values-fil/strings.xml
+@@ -470,7 +470,7 @@
+     <string name="pref_voice_default">off</string>
+     <string name="pref_voice_entry_off">i-off</string>
+     <string name="pref_voice_entry_on">i-on</string>
+-    <string name="provider_authority">com.nothing.camera.provider.SpecialTypeProvider</string>
++    <string name="provider_authority">com.anx.camera.experimental.provider.SpecialTypeProvider</string>
+     <string name="radio_switch_to_beautyvideo">Beauty Video</string>
+     <string name="radio_switch_to_chromaflash">Smart Flash</string>
+     <string name="radio_switch_to_clearsight">ClearSight</string>
+--- a/res/values-fr/strings.xml
++++ b/res/values-fr/strings.xml
+@@ -1336,7 +1336,7 @@
+     <string name="preset_valid_qr_code_message">Veuillez réessayer avec un autre code QR.</string>
+     <string name="preset_valid_qr_code_title">Aucun code QR valide trouvé</string>
+     <string name="preview_photos">Aperçu des photos</string>
+-    <string name="provider_authority">com.nothing.camera.provider.SpecialTypeProvider</string>
++    <string name="provider_authority">com.anx.camera.experimental.provider.SpecialTypeProvider</string>
+     <string name="qr_wifi_message">Code QR Wi-Fi détecté. Se connecter maintenant ?</string>
+     <string name="qr_wifi_title">Se connecter au Wi-Fi</string>
+     <string name="radio_switch_to_beautyvideo">Vidéo beauté</string>
+--- a/res/values-hi/strings.xml
++++ b/res/values-hi/strings.xml
+@@ -1365,7 +1365,7 @@
+     <string name="preset_update">अपडेट करें</string>
+     <string name="preset_valid_qr_code_message">कृपया किसी दूसरे QR कोड के साथ फिर से कोशिश करें।</string>
+     <string name="preset_valid_qr_code_title">हमें कोई मान्य QR कोड नहीं मिला</string>
+-    <string name="provider_authority">com.nothing.camera.provider.SpecialTypeProvider</string>
++    <string name="provider_authority">com.anx.camera.experimental.provider.SpecialTypeProvider</string>
+     <string name="qr_wifi_message">Wi-Fi QR कोड का पता चला। अभी कनेक्ट करें?</string>
+     <string name="qr_wifi_title">Wi-Fi से कनेक्ट करें</string>
+     <string name="radio_switch_to_beautyvideo">ब्यूटी वीडियो</string>
+--- a/res/values-hr/strings.xml
++++ b/res/values-hr/strings.xml
+@@ -1337,7 +1337,7 @@
+     <string name="preset_valid_qr_code_message">Pokušajte ponovno s drugim QR kodom.</string>
+     <string name="preset_valid_qr_code_title">Nismo uspjeli pronaći valjani QR kod</string>
+     <string name="preview_photos">Predpregled fotografija</string>
+-    <string name="provider_authority">com.nothing.camera.provider.SpecialTypeProvider</string>
++    <string name="provider_authority">com.anx.camera.experimental.provider.SpecialTypeProvider</string>
+     <string name="qr_wifi_message">Otkriven je Wi-Fi QR kod. Povezati se sada?</string>
+     <string name="qr_wifi_title">Povezivanje na Wi-Fi</string>
+     <string name="radio_switch_to_beautyvideo">Videozapis s uljepšavanjem</string>
+--- a/res/values-hu-rHU/strings.xml
++++ b/res/values-hu-rHU/strings.xml
+@@ -474,7 +474,7 @@
+     <string name="pref_voice_default">off</string>
+     <string name="pref_voice_entry_off">ki</string>
+     <string name="pref_voice_entry_on">be</string>
+-    <string name="provider_authority">com.nothing.camera.provider.SpecialTypeProvider</string>
++    <string name="provider_authority">com.anx.camera.experimental.provider.SpecialTypeProvider</string>
+     <string name="radio_switch_to_beautyvideo">Szépség videó</string>
+     <string name="radio_switch_to_chromaflash">Intelligens vaku</string>
+     <string name="radio_switch_to_clearsight">Tiszta láthatóság (ClearSight)</string>
+--- a/res/values-in/strings.xml
++++ b/res/values-in/strings.xml
+@@ -1370,7 +1370,7 @@
+     <string name="preset_valid_qr_code_message">Silakan coba lagi dengan kode QR lain.</string>
+     <string name="preset_valid_qr_code_title">Kami tidak dapat menemukan kode QR yang valid</string>
+     <string name="preview_photos">Pratinjau foto</string>
+-    <string name="provider_authority">com.nothing.camera.provider.SpecialTypeProvider</string>
++    <string name="provider_authority">com.anx.camera.experimental.provider.SpecialTypeProvider</string>
+     <string name="qr_wifi_message">Kode QR Wi-Fi terdeteksi. Hubungkan sekarang?</string>
+     <string name="qr_wifi_title">Hubungkan ke Wi-Fi</string>
+     <string name="radio_switch_to_beautyvideo">Video Kecantikan</string>
+--- a/res/values-it/strings.xml
++++ b/res/values-it/strings.xml
+@@ -1337,7 +1337,7 @@
+     <string name="preset_valid_qr_code_message">Riprovare con un altro codice QR.</string>
+     <string name="preset_valid_qr_code_title">Non siamo riusciti a trovare alcun codice QR valido</string>
+     <string name="preview_photos">Anteprima foto</string>
+-    <string name="provider_authority">com.nothing.camera.provider.SpecialTypeProvider</string>
++    <string name="provider_authority">com.anx.camera.experimental.provider.SpecialTypeProvider</string>
+     <string name="qr_wifi_message">È stato rilevato un codice QR per il Wi-Fi. Connettersi adesso?</string>
+     <string name="qr_wifi_title">Connessione al Wi-Fi</string>
+     <string name="radio_switch_to_beautyvideo">Video di bellezza</string>
+--- a/res/values-iw/strings.xml
++++ b/res/values-iw/strings.xml
+@@ -1337,7 +1337,7 @@
+     <string name="preset_valid_qr_code_message">אנא נסה שנית עם קוד QR שונה.</string>
+     <string name="preset_valid_qr_code_title">לא מצאנו שום קוד QR חוקי</string>
+     <string name="preview_photos">תצוגה מוקדמת של תמונות</string>
+-    <string name="provider_authority">com.nothing.camera.provider.SpecialTypeProvider</string>
++    <string name="provider_authority">com.anx.camera.experimental.provider.SpecialTypeProvider</string>
+     <string name="qr_wifi_message">Wi-Fi QR קוד זיהוי. להתחבר עכשיו?</string>
+     <string name="qr_wifi_title">להתחבר ל-Wi-Fi</string>
+     <string name="radio_switch_to_beautyvideo">סרטון יופי</string>
+--- a/res/values-ja/strings.xml
++++ b/res/values-ja/strings.xml
+@@ -1337,7 +1337,7 @@
+     <string name="preset_valid_qr_code_message">別のQRコードでもう一度試してください。</string>
+     <string name="preset_valid_qr_code_title">有効なQRコードが見つかりませんでした</string>
+     <string name="preview_photos">写真プレビュー</string>
+-    <string name="provider_authority">com.nothing.camera.provider.SpecialTypeProvider</string>
++    <string name="provider_authority">com.anx.camera.experimental.provider.SpecialTypeProvider</string>
+     <string name="qr_wifi_message">Wi-Fi QRコードが検出されました。今すぐ接続しますか？</string>
+     <string name="qr_wifi_title">Wi-Fiに接続</string>
+     <string name="radio_switch_to_beautyvideo">ビューティービデオ</string>
+--- a/res/values-kn/strings.xml
++++ b/res/values-kn/strings.xml
+@@ -1365,7 +1365,7 @@
+     <string name="preset_update">ಅಪ್‌ಡೇಟ್ ಮಾಡಿ</string>
+     <string name="preset_valid_qr_code_message">ದಯವಿಟ್ಟು ಇನ್ನೊಂದು QR ಕೋಡ್‌ನೊಂದಿಗೆ ಮತ್ತೊಮ್ಮೆ ಪ್ರಯತ್ನಿಸಿ.</string>
+     <string name="preset_valid_qr_code_title">ನಮಗೆ ಯಾವುದೇ ಮಾನ್ಯವಾದ QR ಕೋಡ್ ಸಿಗಲಿಲ್ಲ</string>
+-    <string name="provider_authority">com.nothing.camera.provider.SpecialTypeProvider</string>
++    <string name="provider_authority">com.anx.camera.experimental.provider.SpecialTypeProvider</string>
+     <string name="qr_wifi_message">Wi-Fi QR ಕೋಡ್ ಪತ್ತೆಯಾಗಿದೆ. ಈಗ ಸಂಪರ್ಕಿಸುವುದೇ?</string>
+     <string name="qr_wifi_title">Wi-Fi ಗೆ ಸಂಪರ್ಕಿಸಿ</string>
+     <string name="radio_switch_to_beautyvideo">ಬ್ಯೂಟಿ ವೀಡಿಯೊ</string>
+--- a/res/values-ko/strings.xml
++++ b/res/values-ko/strings.xml
+@@ -1331,7 +1331,7 @@
+     <string name="preset_update">업데이트</string>
+     <string name="preset_valid_qr_code_message">다른 QR 코드로 다시 시도하세요.</string>
+     <string name="preset_valid_qr_code_title">유효한 QR 코드를 찾을 수 없습니다</string>
+-    <string name="provider_authority">com.nothing.camera.provider.SpecialTypeProvider</string>
++    <string name="provider_authority">com.anx.camera.experimental.provider.SpecialTypeProvider</string>
+     <string name="qr_wifi_message">Wi-Fi QR 코드가 감지되었습니다. 지금 연결하시겠습니까?</string>
+     <string name="qr_wifi_title">Wi-Fi 연결</string>
+     <string name="radio_switch_to_beautyvideo">뷰티 동영상</string>
+--- a/res/values-lt/strings.xml
++++ b/res/values-lt/strings.xml
+@@ -1332,7 +1332,7 @@
+     <string name="preset_update">Atnaujinti</string>
+     <string name="preset_valid_qr_code_message">Bandykite dar kartą naudodami kitą QR kodą.</string>
+     <string name="preset_valid_qr_code_title">Nepavyko rasti jokio tinkamo QR kodo</string>
+-    <string name="provider_authority">com.nothing.camera.provider.SpecialTypeProvider</string>
++    <string name="provider_authority">com.anx.camera.experimental.provider.SpecialTypeProvider</string>
+     <string name="qr_wifi_message">Aptiktas Wi-Fi QR kodas. Prisijungti dabar?</string>
+     <string name="qr_wifi_title">Prisijungti prie Wi-Fi</string>
+     <string name="radio_switch_to_beautyvideo">Grožio veido įrašas</string>
+--- a/res/values-lv/strings.xml
++++ b/res/values-lv/strings.xml
+@@ -1332,7 +1332,7 @@
+     <string name="preset_update">Atjauninājums</string>
+     <string name="preset_valid_qr_code_message">Lūdzu, mēģiniet vēlreiz, izmantojot citu QR kodu.</string>
+     <string name="preset_valid_qr_code_title">Mēs nevarējām atrast nevienu derīgu QR kodu</string>
+-    <string name="provider_authority">com.nothing.camera.provider.SpecialTypeProvider</string>
++    <string name="provider_authority">com.anx.camera.experimental.provider.SpecialTypeProvider</string>
+     <string name="qr_wifi_message">Atklāts Wi-Fi QR kods. Izveidojiet savienojumu tūlīt?</string>
+     <string name="qr_wifi_title">Vai pievienot pie Wi-Fi</string>
+     <string name="radio_switch_to_beautyvideo">Skaistināšanas video</string>
+--- a/res/values-me/strings.xml
++++ b/res/values-me/strings.xml
+@@ -470,7 +470,7 @@
+     <string name="pref_voice_default">off</string>
+     <string name="pref_voice_entry_off">искључено</string>
+     <string name="pref_voice_entry_on">укључено</string>
+-    <string name="provider_authority">com.nothing.camera.provider.SpecialTypeProvider</string>
++    <string name="provider_authority">com.anx.camera.experimental.provider.SpecialTypeProvider</string>
+     <string name="radio_switch_to_beautyvideo">Уљепшавање видеа</string>
+     <string name="radio_switch_to_chromaflash">Паметан блиц</string>
+     <string name="radio_switch_to_clearsight">ClearSight</string>
+--- a/res/values-mk/strings.xml
++++ b/res/values-mk/strings.xml
+@@ -1337,7 +1337,7 @@
+     <string name="preset_valid_qr_code_message">Обидете се повторно со друг QR-код.</string>
+     <string name="preset_valid_qr_code_title">Не можевме да најдеме важечки QR-код</string>
+     <string name="preview_photos">Преглед на фотографии</string>
+-    <string name="provider_authority">com.nothing.camera.provider.SpecialTypeProvider</string>
++    <string name="provider_authority">com.anx.camera.experimental.provider.SpecialTypeProvider</string>
+     <string name="qr_wifi_message">Откриен е QR-код од Wi-Fi. Да се поврзе сега?</string>
+     <string name="qr_wifi_title">Поврзи се на Wi-Fi</string>
+     <string name="radio_switch_to_beautyvideo">Видео за убавина</string>
+--- a/res/values-ml/strings.xml
++++ b/res/values-ml/strings.xml
+@@ -1365,7 +1365,7 @@
+     <string name="preset_update">അപ്ഡേറ്റ് ചെയ്യുക</string>
+     <string name="preset_valid_qr_code_message">മറ്റൊരു QR കോഡ് ഉപയോഗിച്ച് വീണ്ടും ശ്രമിക്കുക.</string>
+     <string name="preset_valid_qr_code_title">ഞങ്ങൾ യാതൊരു സാധുവായ QR കോഡും കണ്ടെത്താൻ കഴിഞ്ഞില്ല</string>
+-    <string name="provider_authority">com.nothing.camera.provider.SpecialTypeProvider</string>
++    <string name="provider_authority">com.anx.camera.experimental.provider.SpecialTypeProvider</string>
+     <string name="qr_wifi_message">വൈഫൈ QR കോഡ് കണ്ടെത്തി. ഇപ്പോൾ കണക്റ്റ് ചെയ്യണോ?</string>
+     <string name="qr_wifi_title">Wi-Fi-യിൽ കണക്റ്റ് ചെയ്യണോ</string>
+     <string name="radio_switch_to_beautyvideo">ബ്യൂട്ടി വീഡിയോ</string>
+--- a/res/values-mr/strings.xml
++++ b/res/values-mr/strings.xml
+@@ -1365,7 +1365,7 @@
+     <string name="preset_update">अपडेट</string>
+     <string name="preset_valid_qr_code_message">कृपया दुसऱ्या QR कोडने पुन्हा प्रयत्न करा.</string>
+     <string name="preset_valid_qr_code_title">आम्हाला कोणताही वैध QR कोड सापडला नाही</string>
+-    <string name="provider_authority">com.nothing.camera.provider.SpecialTypeProvider</string>
++    <string name="provider_authority">com.anx.camera.experimental.provider.SpecialTypeProvider</string>
+     <string name="qr_wifi_message">वाय-फाय QR कोड आढळला. आता कनेक्ट करायचे?</string>
+     <string name="qr_wifi_title">Wi-Fi ला कनेक्ट करायचे का</string>
+     <string name="radio_switch_to_beautyvideo">ब्यूटी व्हिडिओ</string>
+--- a/res/values-ms/strings.xml
++++ b/res/values-ms/strings.xml
+@@ -1337,7 +1337,7 @@
+     <string name="preset_valid_qr_code_message">Sila cuba lagi dengan kod QR yang lain.</string>
+     <string name="preset_valid_qr_code_title">Kami tidak menemui sebarang kod QR yang sah</string>
+     <string name="preview_photos">Pratonton foto</string>
+-    <string name="provider_authority">com.nothing.camera.provider.SpecialTypeProvider</string>
++    <string name="provider_authority">com.anx.camera.experimental.provider.SpecialTypeProvider</string>
+     <string name="qr_wifi_message">Kod QR Wi-Fi dikesan. Sambung sekarang?</string>
+     <string name="qr_wifi_title">Sambung ke Wi-Fi</string>
+     <string name="radio_switch_to_beautyvideo">Cantik Video</string>
+--- a/res/values-mx/strings.xml
++++ b/res/values-mx/strings.xml
+@@ -470,7 +470,7 @@
+     <string name="pref_voice_default">off</string>
+     <string name="pref_voice_entry_off">desactivado</string>
+     <string name="pref_voice_entry_on">activado</string>
+-    <string name="provider_authority">com.nothing.camera.provider.SpecialTypeProvider</string>
++    <string name="provider_authority">com.anx.camera.experimental.provider.SpecialTypeProvider</string>
+     <string name="radio_switch_to_beautyvideo">Video de belleza</string>
+     <string name="radio_switch_to_chromaflash">Flash inteligente</string>
+     <string name="radio_switch_to_clearsight">ClearSight</string>
+--- a/res/values-nb-rNO/strings.xml
++++ b/res/values-nb-rNO/strings.xml
+@@ -470,7 +470,7 @@
+     <string name="pref_voice_default">off</string>
+     <string name="pref_voice_entry_off">av</string>
+     <string name="pref_voice_entry_on">på</string>
+-    <string name="provider_authority">com.nothing.camera.provider.SpecialTypeProvider</string>
++    <string name="provider_authority">com.anx.camera.experimental.provider.SpecialTypeProvider</string>
+     <string name="radio_switch_to_beautyvideo">Skjønnhetsvideo</string>
+     <string name="radio_switch_to_chromaflash">Smartblits</string>
+     <string name="radio_switch_to_clearsight">ClearSight</string>
+--- a/res/values-nl/strings.xml
++++ b/res/values-nl/strings.xml
+@@ -1337,7 +1337,7 @@
+     <string name="preset_valid_qr_code_message">Probeer het opnieuw met een andere QR-code.</string>
+     <string name="preset_valid_qr_code_title">We konden geen geldige QR-code vinden</string>
+     <string name="preview_photos">"Bekijk foto's"</string>
+-    <string name="provider_authority">com.nothing.camera.provider.SpecialTypeProvider</string>
++    <string name="provider_authority">com.anx.camera.experimental.provider.SpecialTypeProvider</string>
+     <string name="qr_wifi_message">Wi-Fi QR-code gedetecteerd. Nu verbinding maken?</string>
+     <string name="qr_wifi_title">Verbinden met Wi-Fi</string>
+     <string name="radio_switch_to_beautyvideo">Beauty Video</string>
+--- a/res/values-pa/strings.xml
++++ b/res/values-pa/strings.xml
+@@ -1365,7 +1365,7 @@
+     <string name="preset_update">ਅੱਪਡੇਟ ਕਰੋ</string>
+     <string name="preset_valid_qr_code_message">ਕਿਰਪਾ ਕਰਕੇ ਕਿਸੇ ਹੋਰ QR ਕੋਡ ਦੇ ਨਾਲ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।</string>
+     <string name="preset_valid_qr_code_title">ਸਾਨੂੰ ਕੋਈ ਵੈਧ QR ਕੋਡ ਨਹੀਂ ਮਿਲਿਆ</string>
+-    <string name="provider_authority">com.nothing.camera.provider.SpecialTypeProvider</string>
++    <string name="provider_authority">com.anx.camera.experimental.provider.SpecialTypeProvider</string>
+     <string name="qr_wifi_message">Wi-Fi QR ਕੋਡ ਦਾ ਪਤਾ ਲੱਗਿਆ ਹੈ। ਕੀ ਹੁਣੇ ਕਨੈਕਟ ਕਰਨਾ ਹੈ?</string>
+     <string name="qr_wifi_title">Wi-Fi ਨਾਲ ਕਨੈਕਟ ਕਰੋ</string>
+     <string name="radio_switch_to_beautyvideo">ਸੁੰਦਰਤਾ ਸੰਬੰਧੀ ਵੀਡੀਓ</string>
+--- a/res/values-pl/strings.xml
++++ b/res/values-pl/strings.xml
+@@ -1337,7 +1337,7 @@
+     <string name="preset_valid_qr_code_message">Spróbuj ponownie, wybierając inny kod QR.</string>
+     <string name="preset_valid_qr_code_title">Nie można znaleźć ważnego kodu QR</string>
+     <string name="preview_photos">Podgląd</string>
+-    <string name="provider_authority">com.nothing.camera.provider.SpecialTypeProvider</string>
++    <string name="provider_authority">com.anx.camera.experimental.provider.SpecialTypeProvider</string>
+     <string name="qr_wifi_message">Wykryto kod QR sieci Wi-Fi. Połączyć teraz?</string>
+     <string name="qr_wifi_title">Połącz z siecią Wi-Fi</string>
+     <string name="radio_switch_to_beautyvideo">Upiększanie wideo</string>
+--- a/res/values-pt-rPT/strings.xml
++++ b/res/values-pt-rPT/strings.xml
+@@ -1337,7 +1337,7 @@
+     <string name="preset_valid_qr_code_message">Tente novamente com outro código QR.</string>
+     <string name="preset_valid_qr_code_title">Não conseguimos encontrar nenhum código QR válido</string>
+     <string name="preview_photos">Prever as fotos</string>
+-    <string name="provider_authority">com.nothing.camera.provider.SpecialTypeProvider</string>
++    <string name="provider_authority">com.anx.camera.experimental.provider.SpecialTypeProvider</string>
+     <string name="qr_wifi_message">Código QR de Wi-Fi detetado. Ligar agora?</string>
+     <string name="qr_wifi_title">Ligar ao Wi-Fi</string>
+     <string name="radio_switch_to_beautyvideo">Embelezador de vídeo</string>
+--- a/res/values-ro/strings.xml
++++ b/res/values-ro/strings.xml
+@@ -1337,7 +1337,7 @@
+     <string name="preset_valid_qr_code_message">Încercați din nou cu alt cod QR.</string>
+     <string name="preset_valid_qr_code_title">Nu am putut găsi niciun cod QR valid</string>
+     <string name="preview_photos">Previzualizare fotografii</string>
+-    <string name="provider_authority">com.nothing.camera.provider.SpecialTypeProvider</string>
++    <string name="provider_authority">com.anx.camera.experimental.provider.SpecialTypeProvider</string>
+     <string name="qr_wifi_message">Cod QR Wi-Fi detectat. Vă conectați acum?</string>
+     <string name="qr_wifi_title">Conectare la Wi-Fi</string>
+     <string name="radio_switch_to_beautyvideo">Înfrumusețare video</string>
+--- a/res/values-ru/strings.xml
++++ b/res/values-ru/strings.xml
+@@ -1336,7 +1336,7 @@
+     <string name="preset_valid_qr_code_message">Попробуйте еще раз с другим QR-кодом.</string>
+     <string name="preset_valid_qr_code_title">Нам не удалось найти QR-коды</string>
+     <string name="preview_photos">Просмотреть фото?</string>
+-    <string name="provider_authority">com.nothing.camera.provider.SpecialTypeProvider</string>
++    <string name="provider_authority">com.anx.camera.experimental.provider.SpecialTypeProvider</string>
+     <string name="qr_wifi_message">Обнаружен QR-код Wi-Fi. Подключиться сейчас?</string>
+     <string name="qr_wifi_title">Подключение к Wi-Fi</string>
+     <string name="radio_switch_to_beautyvideo">Бьюти-режим для видео</string>
+--- a/res/values-sk/strings.xml
++++ b/res/values-sk/strings.xml
+@@ -1337,7 +1337,7 @@
+     <string name="preset_valid_qr_code_message">Skúste to znova s iným QR kódom.</string>
+     <string name="preset_valid_qr_code_title">Nenašli sme žiadny platný QR kód</string>
+     <string name="preview_photos">Náhľad fotiek</string>
+-    <string name="provider_authority">com.nothing.camera.provider.SpecialTypeProvider</string>
++    <string name="provider_authority">com.anx.camera.experimental.provider.SpecialTypeProvider</string>
+     <string name="qr_wifi_message">Bol zistený kód QR siete Wi-Fi. Pripojiť teraz?</string>
+     <string name="qr_wifi_title">Pripojenie do siete Wi-Fi</string>
+     <string name="radio_switch_to_beautyvideo">Estetické video</string>
+--- a/res/values-sl/strings.xml
++++ b/res/values-sl/strings.xml
+@@ -1337,7 +1337,7 @@
+     <string name="preset_valid_qr_code_message">Poskusite ponovno z drugo kodo QR.</string>
+     <string name="preset_valid_qr_code_title">Nismo našli nobene veljavne kode QR</string>
+     <string name="preview_photos">predogled slik</string>
+-    <string name="provider_authority">com.nothing.camera.provider.SpecialTypeProvider</string>
++    <string name="provider_authority">com.anx.camera.experimental.provider.SpecialTypeProvider</string>
+     <string name="qr_wifi_message">Zaznana je bila QR koda za Wi-Fi. Poveži se zdaj?</string>
+     <string name="qr_wifi_title">Poveži z Wi-Fi?</string>
+     <string name="radio_switch_to_beautyvideo">Video z lepšanjem</string>
+--- a/res/values-sv/strings.xml
++++ b/res/values-sv/strings.xml
+@@ -1337,7 +1337,7 @@
+     <string name="preset_valid_qr_code_message">Försök igen med en annan QR-kod.</string>
+     <string name="preset_valid_qr_code_title">Vi kunde inte hitta någon giltig QR-kod</string>
+     <string name="preview_photos">Förhandsgranska foton</string>
+-    <string name="provider_authority">com.nothing.camera.provider.SpecialTypeProvider</string>
++    <string name="provider_authority">com.anx.camera.experimental.provider.SpecialTypeProvider</string>
+     <string name="qr_wifi_message">QR-kod för Wi-Fi upptäckt. Anslut nu?</string>
+     <string name="qr_wifi_title">Anslut till Wi-Fi</string>
+     <string name="radio_switch_to_beautyvideo">Video med försköning</string>
+--- a/res/values-ta/strings.xml
++++ b/res/values-ta/strings.xml
+@@ -1365,7 +1365,7 @@
+     <string name="preset_update">புதுப்பிக்கவும்</string>
+     <string name="preset_valid_qr_code_message">வேறொரு QR குறியீட்டைப் பயன்படுத்தி மீண்டும் முயற்சிக்கவும்.</string>
+     <string name="preset_valid_qr_code_title">சரியான QR குறியீட்டை எங்களால் கண்டுபிடிக்க முடியவில்லை</string>
+-    <string name="provider_authority">com.nothing.camera.provider.SpecialTypeProvider</string>
++    <string name="provider_authority">com.anx.camera.experimental.provider.SpecialTypeProvider</string>
+     <string name="qr_wifi_message">Wi-Fi QR குறியீடு கண்டறியப்பட்டது. இப்போதே இணைக்கவா?</string>
+     <string name="qr_wifi_title">Wi-Fi உடன் இணை</string>
+     <string name="radio_switch_to_beautyvideo">அழகு வீடியோ</string>
+--- a/res/values-te/strings.xml
++++ b/res/values-te/strings.xml
+@@ -1365,7 +1365,7 @@
+     <string name="preset_update">అప్‌డేట్ చేయి</string>
+     <string name="preset_valid_qr_code_message">దయచేసి మరొక QR కోడ్‌తో మళ్లీ ప్రయత్నించండి.</string>
+     <string name="preset_valid_qr_code_title">మేం చెల్లుబాటు అయ్యే QR కోడ్‌ను కనుగొనలేకపోయాం</string>
+-    <string name="provider_authority">com.nothing.camera.provider.SpecialTypeProvider</string>
++    <string name="provider_authority">com.anx.camera.experimental.provider.SpecialTypeProvider</string>
+     <string name="qr_wifi_message">Wi-Fi QR కోడ్ గుర్తించబడింది. ఇప్పుడు కనెక్ట్ చేయాలా?</string>
+     <string name="qr_wifi_title">Wi-Fiకు కనెక్ట్ చేయాలా?</string>
+     <string name="radio_switch_to_beautyvideo">బ్యూటీ వీడియో</string>
+--- a/res/values-th/strings.xml
++++ b/res/values-th/strings.xml
+@@ -1337,7 +1337,7 @@
+     <string name="preset_valid_qr_code_message">โปรดลองอีกครั้งด้วยคิวอาร์โค้ดอื่น</string>
+     <string name="preset_valid_qr_code_title">เราไม่พบคิวอาร์โค้ดที่ถูกต้อง</string>
+     <string name="preview_photos">รูปถ่าย</string>
+-    <string name="provider_authority">com.nothing.camera.provider.SpecialTypeProvider</string>
++    <string name="provider_authority">com.anx.camera.experimental.provider.SpecialTypeProvider</string>
+     <string name="qr_wifi_message">ตรวจพบรหัส QR ของ Wi-Fi เชื่อมต่อเลยหรือไม่</string>
+     <string name="qr_wifi_title">ต้องการเชื่อมต่อกับ Wi-Fi หรือไม่</string>
+     <string name="radio_switch_to_beautyvideo">วิดีโอหน้าสวย</string>
+--- a/res/values-uk/strings.xml
++++ b/res/values-uk/strings.xml
+@@ -1337,7 +1337,7 @@
+     <string name="preset_valid_qr_code_message">Повторіть спробу з іншим QR-кодом.</string>
+     <string name="preset_valid_qr_code_title">Не вдалося знайти жодного дійсного QR-коду</string>
+     <string name="preview_photos">Переглянути фото?</string>
+-    <string name="provider_authority">com.nothing.camera.provider.SpecialTypeProvider</string>
++    <string name="provider_authority">com.anx.camera.experimental.provider.SpecialTypeProvider</string>
+     <string name="qr_wifi_message">Виявлено QR-код мережі Wi-Fi. Підключитися зараз?</string>
+     <string name="qr_wifi_title">Підключення до мережі Wi-Fi</string>
+     <string name="radio_switch_to_beautyvideo">Ретушоване відео</string>
+--- a/res/values-vi/strings.xml
++++ b/res/values-vi/strings.xml
+@@ -1337,7 +1337,7 @@
+     <string name="preset_valid_qr_code_message">Vui lòng thử lại bằng một mã QR khác.</string>
+     <string name="preset_valid_qr_code_title">Chúng tôi không thể tìm thấy mã QR hợp lệ nào</string>
+     <string name="preview_photos">Xem trước ảnh</string>
+-    <string name="provider_authority">com.nothing.camera.provider.SpecialTypeProvider</string>
++    <string name="provider_authority">com.anx.camera.experimental.provider.SpecialTypeProvider</string>
+     <string name="qr_wifi_message">Đã phát hiện mã QR Wi-Fi. Kết nối ngay?</string>
+     <string name="qr_wifi_title">Kết nối với Wi-Fi</string>
+     <string name="radio_switch_to_beautyvideo">Video làm đẹp</string>
+--- a/res/values-zh-rHK/strings.xml
++++ b/res/values-zh-rHK/strings.xml
+@@ -1338,7 +1338,7 @@
+     <string name="preset_valid_qr_code_message">請嘗試不同的 QR 碼，然後再試一次。</string>
+     <string name="preset_valid_qr_code_title">找不到有效的 QR 碼</string>
+     <string name="preview_photos">拍照即可預覽</string>
+-    <string name="provider_authority">com.nothing.camera.provider.SpecialTypeProvider</string>
++    <string name="provider_authority">com.anx.camera.experimental.provider.SpecialTypeProvider</string>
+     <string name="qr_wifi_message">掃描到 Wi-Fi QR 碼，是否連線？</string>
+     <string name="qr_wifi_title">網路連線確認</string>
+     <string name="radio_switch_to_beautyvideo">美化影片</string>
+--- a/res/values-zh-rTW/strings.xml
++++ b/res/values-zh-rTW/strings.xml
+@@ -1339,7 +1339,7 @@
+     <string name="preset_valid_qr_code_message">請嘗試不同的 QR 碼，然後再試一次。</string>
+     <string name="preset_valid_qr_code_title">找不到有效的 QR 碼</string>
+     <string name="preview_photos">拍照即可預覽</string>
+-    <string name="provider_authority">com.nothing.camera.provider.SpecialTypeProvider</string>
++    <string name="provider_authority">com.anx.camera.experimental.provider.SpecialTypeProvider</string>
+     <string name="qr_wifi_message">掃描到 Wi-Fi QR 碼，是否連線？</string>
+     <string name="qr_wifi_title">網路連線確認</string>
+     <string name="radio_switch_to_beautyvideo">美肌影片</string>
+--- a/res/values/strings.xml
++++ b/res/values/strings.xml
+@@ -2201,7 +2201,7 @@
+     <string name="preset_valid_qr_code_title">Valid QR Code not found</string>
+     <string name="preset_video_rec_light">Rec.light</string>
+     <string name="preview_photos">Preview photos</string>
+-    <string name="provider_authority">com.nothing.camera.provider.SpecialTypeProvider</string>
++    <string name="provider_authority">com.anx.camera.experimental.provider.SpecialTypeProvider</string>
+     <string name="qr_wifi_message">Wi-Fi QR code detected. Connect now?</string>
+     <string name="qr_wifi_title">Connect to Wi-Fi</string>
+     <string name="quality">@string/camera_quality</string>
+--- a/res/xml/camerashortcuts.xml
++++ b/res/xml/camerashortcuts.xml
+@@ -2,19 +2,19 @@
+ <shortcuts
+   xmlns:android="http://schemas.android.com/apk/res/android">
+     <shortcut android:icon="@drawable/ic_shortcut_back_video" android:enabled="true" android:shortcutId="backvideo" android:shortcutShortLabel="@string/shutcauts_backvideo" android:shortcutLongLabel="@string/shutcauts_backvideo" android:shortcutDisabledMessage="@string/shutcauts_backvideo">
+-        <intent android:targetPackage="com.nothing.camera" android:action="android.media.action.SHORTCUT_CAMERA" android:targetClass="com.nothing.camera.activity.CameraShortCutActivity">
++        <intent android:targetPackage="com.anx.camera.experimental" android:action="android.media.action.SHORTCUT_CAMERA" android:targetClass="com.nothing.camera.activity.CameraShortCutActivity">
+             <extra android:name="android.intent.extras.CAMERA_FACING" android:value="1" />
+             <extra android:name="android.intent.extras.CAMERA_SUB_MODE" android:value="video" />
+         </intent>
+     </shortcut>
+     <shortcut android:icon="@drawable/ic_shortcut_portrait_camera" android:enabled="true" android:shortcutId="portraitcamera" android:shortcutShortLabel="@string/shutcauts_portrait_camera" android:shortcutLongLabel="@string/shutcauts_portrait_camera" android:shortcutDisabledMessage="@string/shutcauts_portrait_camera">
+-        <intent android:targetPackage="com.nothing.camera" android:action="android.media.action.SHORTCUT_CAMERA" android:targetClass="com.nothing.camera.activity.CameraShortCutActivity">
++        <intent android:targetPackage="com.anx.camera.experimental" android:action="android.media.action.SHORTCUT_CAMERA" android:targetClass="com.nothing.camera.activity.CameraShortCutActivity">
+             <extra android:name="android.intent.extras.CAMERA_FACING" android:value="0" />
+             <extra android:name="android.intent.extras.CAMERA_SUB_MODE" android:value="bokeh" />
+         </intent>
+     </shortcut>
+     <shortcut android:icon="@drawable/ic_shortcut_selfie_photo" android:enabled="true" android:shortcutId="selfiephoto" android:shortcutShortLabel="@string/shutcauts_frontcamera" android:shortcutLongLabel="@string/shutcauts_frontcamera" android:shortcutDisabledMessage="@string/shutcauts_frontcamera">
+-        <intent android:targetPackage="com.nothing.camera" android:action="android.media.action.SHORTCUT_CAMERA" android:targetClass="com.nothing.camera.activity.CameraShortCutActivity">
++        <intent android:targetPackage="com.anx.camera.experimental" android:action="android.media.action.SHORTCUT_CAMERA" android:targetClass="com.nothing.camera.activity.CameraShortCutActivity">
+             <extra android:name="android.intent.extras.CAMERA_FACING" android:value="1" />
+         </intent>
+     </shortcut>
+--- a/smali/com/nothing/camera/BuildConfig.smali
++++ b/smali/com/nothing/camera/BuildConfig.smali
+@@ -4,7 +4,7 @@
+ 
+ 
+ # static fields
+-.field public static final APPLICATION_ID:Ljava/lang/String; = "com.nothing.camera"
++.field public static final APPLICATION_ID:Ljava/lang/String; = "com.anx.camera.experimental"
+ 
+ .field public static final BUILD_TYPE:Ljava/lang/String; = "release"
+ 
+--- a/smali_classes3/com/nothing/camera/activity/CameraSettingsDialogueActivity.smali
++++ b/smali_classes3/com/nothing/camera/activity/CameraSettingsDialogueActivity.smali
+@@ -72,7 +72,7 @@
+     move-result-object v0
+ 
+     .line 37
+-    const-string v1, "com.nothing.camera"
++    const-string v1, "com.anx.camera.experimental"
+ 
+     const-string v2, "com.nothing.camera.activity.CameraActivity"
+ 
+--- a/smali_classes3/com/nothing/camera/activity/CameraShortCutActivity.smali
++++ b/smali_classes3/com/nothing/camera/activity/CameraShortCutActivity.smali
+@@ -37,7 +37,7 @@
+     move-result-object p1
+ 
+     .line 27
+-    const-string v0, "com.nothing.camera"
++    const-string v0, "com.anx.camera.experimental"
+ 
+     const-string v1, "com.nothing.camera.activity.CameraActivity"
+ 
+--- a/smali_classes3/com/nothing/camera/activity/VoiceCameraActivity.smali
++++ b/smali_classes3/com/nothing/camera/activity/VoiceCameraActivity.smali
+@@ -68,7 +68,7 @@
+     invoke-virtual {p1, v0}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
+ 
+     .line 22
+-    const-string v0, "com.nothing.camera"
++    const-string v0, "com.anx.camera.experimental"
+ 
+     const-string v1, "com.nothing.camera.activity.CameraActivity"
+ 
+--- a/smali_classes3/com/nothing/camera/activity/VoiceSecureCameraActivity.smali
++++ b/smali_classes3/com/nothing/camera/activity/VoiceSecureCameraActivity.smali
+@@ -82,7 +82,7 @@
+ 
+     .line 23
+     :cond_0
+-    const-string v0, "com.nothing.camera"
++    const-string v0, "com.anx.camera.experimental"
+ 
+     const-string v1, "com.nothing.camera.activity.SecureCameraActivity"
+ 
+--- a/smali_classes3/com/nothing/camera/app/CameraApp.smali
++++ b/smali_classes3/com/nothing/camera/app/CameraApp.smali
+@@ -15,7 +15,7 @@
+ 
+ 
+ # static fields
+-.field private static final CAMERA_APP_PROCESS_NAME:Ljava/lang/String; = "com.nothing.camera"
++.field private static final CAMERA_APP_PROCESS_NAME:Ljava/lang/String; = "com.anx.camera.experimental"
+ 
+ .field private static final DEBUG_TAG:Ljava/lang/String; = "DEBUG_CameraApp"
+ 
+@@ -90,7 +90,7 @@
+     .locals 1
+ 
+     .line 121
+-    const-string v0, "com.nothing.camera"
++    const-string v0, "com.anx.camera.experimental"
+ 
+     invoke-virtual {v0, p1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+ 
+@@ -273,6 +273,8 @@
+     .line 70
+     invoke-super {p0, p1}, Lcom/nothing/common/application/FocusRecordApplication;->attachBaseContext(Landroid/content/Context;)V
+ 
++    invoke-static {}, Lcom/anx/camera/bridge/MetadataCompatibility;->initialize()V
++
+     .line 71
+     invoke-static {}, Lcom/nothing/common/utils/PerformanceTrack;->getInstance()Lcom/nothing/common/utils/PerformanceTrack;
+ 
+@@ -518,7 +520,7 @@
+     .line 79
+     sget-boolean v2, Lcom/nothing/common/utils/LogUtil;->sEnableMoreDebugInfoWriter:Z
+ 
+-    const-string v5, "com.nothing.camera"
++    const-string v5, "com.anx.camera.experimental"
+ 
+     if-eqz v2, :cond_0
+ 
+--- a/smali_classes4/com/nothing/algolib/cameraufs/UFSClient.smali
++++ b/smali_classes4/com/nothing/algolib/cameraufs/UFSClient.smali
+@@ -235,9 +235,7 @@
+     .line 117
+     sget-object v2, Lcom/nothing/common/utils/ContextUtil;->sAppContext:Landroid/content/Context;
+ 
+-    invoke-virtual {v2}, Landroid/content/Context;->getPackageName()Ljava/lang/String;
+-
+-    move-result-object v2
++    const-string v2, "com.nothing.camera"
+ 
+     const-class v3, Lcom/nothing/algolib/cameraufs/UFSService;
+ 
+@@ -470,6 +468,14 @@
+ 
+     .line 138
+     :try_start_0
++    sget-object v0, Lcom/nothing/common/utils/ContextUtil;->sAppContext:Landroid/content/Context;
++
++    invoke-static {v0, p1}, Lcom/anx/camera/bridge/Nos41UfsBridge;->wrap(Landroid/content/Context;Landroid/os/IBinder;)Landroid/os/IBinder;
++
++    move-result-object p1
++
++    const-string v0, "handleServiceConnected, mRemoteService: "
++
+     invoke-static {p1}, Lcom/nothing/algolib/cameraufs/INtCamUfsSession$Stub;->asInterface(Landroid/os/IBinder;)Lcom/nothing/algolib/cameraufs/INtCamUfsSession;
+ 
+     move-result-object p1
+--- a/smali_classes4/com/nothing/algolib/cameraufs/UFSManager.smali
++++ b/smali_classes4/com/nothing/algolib/cameraufs/UFSManager.smali
+@@ -6085,7 +6085,26 @@
+ 
+     invoke-static {v4, v6, v3}, Lcom/nothing/common/reflect/ApiHelper;->getMethod(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+ 
+-    move-result-object v3
++    move-result-object v6
++
++    if-nez v6, :service_lookup_ready
++
++    const-string v6, "getService"
++
++    invoke-static {v4, v6, v3}, Lcom/nothing/common/reflect/ApiHelper;->getMethod(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
++
++    move-result-object v6
++
++    if-nez v6, :service_lookup_ready
++
++    const-string v0, "INtCamService lookup unavailable: waitForDeclaredService and getService inaccessible"
++
++    invoke-static {v2, v0}, Lcom/nothing/common/utils/LogUtil;->e(Ljava/lang/String;Ljava/lang/String;)V
++
++    return-void
++
++    :service_lookup_ready
++    move-object v3, v6
+ 
+     .line 365
+     invoke-virtual {v3, v1}, Ljava/lang/reflect/Method;->setAccessible(Z)V
+--- a/smali_classes4/com/nothing/algolib/offlineproc/NtCameraManager$NtCamImageProvider.smali
++++ b/smali_classes4/com/nothing/algolib/offlineproc/NtCameraManager$NtCamImageProvider.smali
+@@ -861,171 +861,13 @@
+ .end method
+ 
+ .method private static declared-synchronized newInstanceImageWriter(Landroid/view/Surface;IIII)Landroid/media/ImageWriter;
+-    .locals 7
+-    .annotation system Ldalvik/annotation/MethodParameters;
+-        accessFlags = {
+-            0x0,
+-            0x0,
+-            0x0,
+-            0x0,
+-            0x0
+-        }
+-        names = {
+-            "surface",
+-            "maxImages",
+-            "format",
+-            "width",
+-            "height"
+-        }
+-    .end annotation
+-
+-    const-class v0, Lcom/nothing/algolib/offlineproc/NtCameraManager$NtCamImageProvider;
+-
+-    monitor-enter v0
+-
+-    .line 1618
+-    :try_start_0
+-    sget-object v1, Lcom/nothing/algolib/offlineproc/NtCameraManager$NtCamImageProvider;->mImageWriterInstance:Ljava/lang/reflect/Method;
+-    :try_end_0
+-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+-
+-    if-nez v1, :cond_0
+-
+-    .line 1620
+-    :try_start_1
+-    const-class v1, Landroid/media/ImageWriter;
+-
+-    const-string v2, "newInstance"
+-
+-    const/4 v3, 0x5
+-
+-    new-array v3, v3, [Ljava/lang/Class;
+-
+-    const-class v4, Landroid/view/Surface;
+-
+-    const/4 v5, 0x0
+-
+-    aput-object v4, v3, v5
+-
+-    sget-object v4, Ljava/lang/Integer;->TYPE:Ljava/lang/Class;
+-
+-    const/4 v5, 0x1
+-
+-    aput-object v4, v3, v5
+-
+-    sget-object v4, Ljava/lang/Integer;->TYPE:Ljava/lang/Class;
+-
+-    const/4 v6, 0x2
+-
+-    aput-object v4, v3, v6
+-
+-    sget-object v4, Ljava/lang/Integer;->TYPE:Ljava/lang/Class;
+-
+-    const/4 v6, 0x3
+-
+-    aput-object v4, v3, v6
+-
+-    sget-object v4, Ljava/lang/Integer;->TYPE:Ljava/lang/Class;
+-
+-    const/4 v6, 0x4
+-
+-    aput-object v4, v3, v6
+-
+-    invoke-virtual {v1, v2, v3}, Ljava/lang/Class;->getMethod(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+-
+-    move-result-object v1
+-
+-    sput-object v1, Lcom/nothing/algolib/offlineproc/NtCameraManager$NtCamImageProvider;->mImageWriterInstance:Ljava/lang/reflect/Method;
+-
+-    .line 1621
+-    invoke-virtual {v1, v5}, Ljava/lang/reflect/Method;->setAccessible(Z)V
+-    :try_end_1
+-    .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_0
+-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+-
+-    goto :goto_0
+-
+-    :catch_0
+-    move-exception v1
+-
+-    .line 1625
+-    :try_start_2
+-    const-string v2, "NtCamImageProvider"
+-
+-    const-string/jumbo v3, "throw RuntimeException"
+-
+-    invoke-static {v2, v3, v1}, Lcom/nothing/common/utils/LogUtil;->d(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+-    :try_end_2
+-    .catchall {:try_start_2 .. :try_end_2} :catchall_0
+-
+-    :cond_0
+-    :goto_0
+-    const/4 v1, 0x0
+-
+-    .line 1630
+-    :try_start_3
+-    sget-object v2, Lcom/nothing/algolib/offlineproc/NtCameraManager$NtCamImageProvider;->mImageWriterInstance:Ljava/lang/reflect/Method;
+-
+-    invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+-
+-    move-result-object p1
+-
+-    invoke-static {p2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+-
+-    move-result-object p2
+-
+-    invoke-static {p3}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+-
+-    move-result-object p3
+-
+-    invoke-static {p4}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+-
+-    move-result-object p4
+-
+-    filled-new-array {p0, p1, p2, p3, p4}, [Ljava/lang/Object;
+-
+-    move-result-object p0
+-
+-    invoke-virtual {v2, v1, p0}, Ljava/lang/reflect/Method;->invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+-
+-    move-result-object p0
+-
+-    check-cast p0, Landroid/media/ImageWriter;
+-    :try_end_3
+-    .catch Ljava/lang/Exception; {:try_start_3 .. :try_end_3} :catch_1
+-    .catchall {:try_start_3 .. :try_end_3} :catchall_0
+-
+-    monitor-exit v0
+-
+-    return-object p0
+-
+-    :catch_1
+-    move-exception p0
+-
+-    .line 1634
+-    :try_start_4
+-    const-string p1, "NtCamImageProvider"
+-
+-    const-string/jumbo p2, "throw RuntimeException"
+-
+-    invoke-static {p1, p2, p0}, Lcom/nothing/common/utils/LogUtil;->d(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+-    :try_end_4
+-    .catchall {:try_start_4 .. :try_end_4} :catchall_0
+-
+-    .line 1637
+-    monitor-exit v0
+-
+-    return-object v1
+-
+-    :catchall_0
+-    move-exception p0
+-
+-    :try_start_5
+-    monitor-exit v0
+-    :try_end_5
+-    .catchall {:try_start_5 .. :try_end_5} :catchall_0
+-
+-    throw p0
++    .locals 1
++
++    invoke-static {p0, p1, p2, p3, p4}, Lcom/anx/camera/bridge/PublicImageWriter;->create(Landroid/view/Surface;IIII)Landroid/media/ImageWriter;
++
++    move-result-object v0
++
++    return-object v0
+ .end method
+ 
+ 
+--- a/smali_classes4/com/nothing/algolib/proxy/ExtensionsInterfaceProxyWrapper.smali
++++ b/smali_classes4/com/nothing/algolib/proxy/ExtensionsInterfaceProxyWrapper.smali
+@@ -8,7 +8,7 @@
+ 
+ .field private static final CONNECT_TIMEOUT:J = 0xbb8L
+ 
+-.field private static final PROXY_PACKAGE_NAME:Ljava/lang/String; = "com.nothing.camera"
++.field private static final PROXY_PACKAGE_NAME:Ljava/lang/String; = "com.anx.camera.experimental"
+ 
+ .field private static final PROXY_SERVICE_NAME:Ljava/lang/String; = "com.nothing.camera.pipeline.ExtensionsInterfaceProxyImplService"
+ 
+@@ -108,7 +108,7 @@
+     invoke-direct {v2}, Landroid/content/Intent;-><init>()V
+ 
+     .line 70
+-    const-string v3, "com.nothing.camera"
++    const-string v3, "com.anx.camera.experimental"
+ 
+     const-string v4, "com.nothing.camera.pipeline.ExtensionsInterfaceProxyImplService"
+ 
+--- a/smali_classes4/com/nothing/camera/gesture/GestureRecognizer.smali
++++ b/smali_classes4/com/nothing/camera/gesture/GestureRecognizer.smali
+@@ -138,6 +138,13 @@
+ 
+     move-result-object p0
+ 
++    if-nez p0, :scale_detector_ready
++
++    new-instance p0, Landroid/view/ScaleGestureDetector;
++
++    invoke-direct {p0, v4, v8, v7}, Landroid/view/ScaleGestureDetector;-><init>(Landroid/content/Context;Landroid/view/ScaleGestureDetector$OnScaleGestureListener;Landroid/os/Handler;)V
++
++    :scale_detector_ready
+     iput-object p0, v3, Lcom/nothing/camera/gesture/GestureRecognizer;->mScaleDetector:Landroid/view/ScaleGestureDetector;
+ 
+     .line 74
+--- a/smali_classes5/com/nothing/common/api/googlefilter/activities/PartnerContentProviderCaller.smali
++++ b/smali_classes5/com/nothing/common/api/googlefilter/activities/PartnerContentProviderCaller.smali
+@@ -28,7 +28,7 @@
+ 
+ .field private static final OUTPUT_URI_KEY_NAME:Ljava/lang/String; = "output_uri"
+ 
+-.field private static final PARTNER_AUTHORITY:Ljava/lang/String; = "com.nothing.camera.provider.SpecialTypeProvider"
++.field private static final PARTNER_AUTHORITY:Ljava/lang/String; = "com.anx.camera.experimental.provider.SpecialTypeProvider"
+ 
+ .field private static final PARTNER_AUTHORITY_KEY_NAME:Ljava/lang/String; = "partner_authority"
+ 
+@@ -98,7 +98,7 @@
+     .line 86
+     const-string p1, "partner_authority"
+ 
+-    const-string p2, "com.nothing.camera.provider.SpecialTypeProvider"
++    const-string p2, "com.anx.camera.experimental.provider.SpecialTypeProvider"
+ 
+     invoke-virtual {v0, p1, p2}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V
+ 
+@@ -160,7 +160,7 @@
+     .line 104
+     const-string p1, "partner_authority"
+ 
+-    const-string p2, "com.nothing.camera.provider.SpecialTypeProvider"
++    const-string p2, "com.anx.camera.experimental.provider.SpecialTypeProvider"
+ 
+     invoke-virtual {v0, p1, p2}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V
+ 
+--- a/smali_classes5/com/nothing/common/shortcutwidget/config/CameraConfig.smali
++++ b/smali_classes5/com/nothing/common/shortcutwidget/config/CameraConfig.smali
+@@ -4,7 +4,7 @@
+ 
+ 
+ # static fields
+-.field public static final APPLICATION_ID:Ljava/lang/String; = "com.nothing.camera"
++.field public static final APPLICATION_ID:Ljava/lang/String; = "com.anx.camera.experimental"
+ 
+ .field public static BACK_FLASH_GLYPH:Ljava/lang/String; = "1"
+ 
+@@ -343,7 +343,7 @@
+     .line 91
+     new-instance v0, Landroid/content/ComponentName;
+ 
+-    const-string v1, "com.nothing.camera"
++    const-string v1, "com.anx.camera.experimental"
+ 
+     const-string v2, "${BuildConfig.APPLICATION_ID}.camera.CameraWidgetProvider"
+ 
+--- a/smali_classes5/com/nothing/common/shortcutwidget/provider/CameraWidgetProvider.smali
++++ b/smali_classes5/com/nothing/common/shortcutwidget/provider/CameraWidgetProvider.smali
+@@ -7,9 +7,9 @@
+ 
+ 
+ # static fields
+-.field private static final AUTHORITY:Ljava/lang/String; = "com.nothing.camera.authority.APP_CAMERA.shortcut"
+-
+-.field private static final CAMERA_PKG_NAME:Ljava/lang/String; = "com.nothing.camera"
++.field private static final AUTHORITY:Ljava/lang/String; = "com.anx.camera.experimental.authority.APP_CAMERA.shortcut"
++
++.field private static final CAMERA_PKG_NAME:Ljava/lang/String; = "com.anx.camera.experimental"
+ 
+ .field private static final CAMERA_WIDGET_1X1:I = 0x3
+ 
+@@ -132,7 +132,7 @@
+ 
+     const/4 v2, 0x0
+ 
+-    const-string v3, "com.nothing.camera"
++    const-string v3, "com.anx.camera.experimental"
+ 
+     aput-object v3, v1, v2
+ 
+@@ -233,7 +233,7 @@
+ 
+     const-string p0, "com.nothing.camera.WIDGET_CAMERA"
+ 
+-    const-string v0, "com.nothing.camera"
++    const-string v0, "com.anx.camera.experimental"
+ 
+     const/4 v1, 0x0
+ 
+@@ -2289,9 +2289,9 @@
+ 
+     sget v0, Lcom/nothing/common/R$layout;->new_camera_pages_1x1:I
+ 
+-    const-string v1, "com.nothing.camera"
+-
+-    const-string v2, "com.nothing.camera.authority.APP_CAMERA.shortcut"
++    const-string v1, "com.anx.camera.experimental"
++
++    const-string v2, "com.anx.camera.experimental.authority.APP_CAMERA.shortcut"
+ 
+     invoke-direct {v8, v0, v1, v2}, Lcom/nothing/cardtransform/CardInfo;-><init>(ILjava/lang/String;Ljava/lang/String;)V
+ 
+@@ -2496,9 +2496,9 @@
+ 
+     sget v0, Lcom/nothing/common/R$layout;->new_camera_pages_2x1:I
+ 
+-    const-string v1, "com.nothing.camera"
+-
+-    const-string v2, "com.nothing.camera.authority.APP_CAMERA.shortcut"
++    const-string v1, "com.anx.camera.experimental"
++
++    const-string v2, "com.anx.camera.experimental.authority.APP_CAMERA.shortcut"
+ 
+     invoke-direct {v7, v0, v1, v2}, Lcom/nothing/cardtransform/CardInfo;-><init>(ILjava/lang/String;Ljava/lang/String;)V
+ 
+@@ -2736,9 +2736,9 @@
+ 
+     sget v0, Lcom/nothing/common/R$layout;->camera_widget_shortcut_2x2:I
+ 
+-    const-string v1, "com.nothing.camera"
+-
+-    const-string v2, "com.nothing.camera.authority.APP_CAMERA.shortcut"
++    const-string v1, "com.anx.camera.experimental"
++
++    const-string v2, "com.anx.camera.experimental.authority.APP_CAMERA.shortcut"
+ 
+     invoke-direct {v11, v0, v1, v2}, Lcom/nothing/cardtransform/CardInfo;-><init>(ILjava/lang/String;Ljava/lang/String;)V
+ 
+@@ -4600,7 +4600,7 @@
+     .line 1641
+     new-instance v2, Lcom/nothing/cardtransform/info/IntentInfo;
+ 
+-    const-string p0, "com.nothing.camera"
++    const-string p0, "com.anx.camera.experimental"
+ 
+     const/4 v0, 0x0
+ 

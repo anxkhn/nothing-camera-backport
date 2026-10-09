@@ -1,0 +1,16 @@
+.work/
+__pycache__/
+*.pyc
+*.apk
+*.aar
+*.jar
+*.dex
+*.so
+*.img
+*.7z*
+*.p12
+*.jks
+*.keystore
+.uv-cache/
+.ruff_cache/
+.playwright-cli/

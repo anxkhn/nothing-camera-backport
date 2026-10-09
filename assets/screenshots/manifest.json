@@ -1,0 +1,438 @@
+{
+  "photo": {
+    "source": "Real r12 Phone 3a Camera UI via ADB screencap",
+    "crop": [
+      0,
+      126,
+      1080,
+      2352
+    ],
+    "gallery_thumbnail_redactions": [
+      [
+        89,
+        1954,
+        214,
+        2079
+      ]
+    ],
+    "screen_only": true
+  },
+  "photo-controls": {
+    "source": "Real r12 Phone 3a Camera UI via ADB screencap",
+    "crop": [
+      0,
+      126,
+      1080,
+      2352
+    ],
+    "gallery_thumbnail_redactions": [
+      [
+        89,
+        1954,
+        214,
+        2079
+      ]
+    ],
+    "screen_only": true
+  },
+  "filters": {
+    "source": "Real r12 Phone 3a Camera UI via ADB screencap",
+    "crop": [
+      0,
+      126,
+      1080,
+      2352
+    ],
+    "gallery_thumbnail_redactions": [
+      [
+        89,
+        1954,
+        214,
+        2079
+      ]
+    ],
+    "screen_only": true
+  },
+  "tuning": {
+    "source": "Real r12 Phone 3a Camera UI via ADB screencap",
+    "crop": [
+      0,
+      126,
+      1080,
+      2352
+    ],
+    "gallery_thumbnail_redactions": [],
+    "screen_only": true
+  },
+  "tuning-controls": {
+    "source": "Real r12 Phone 3a Camera UI via ADB screencap",
+    "crop": [
+      0,
+      126,
+      1080,
+      2352
+    ],
+    "gallery_thumbnail_redactions": [
+      [
+        89,
+        1954,
+        214,
+        2079
+      ]
+    ],
+    "screen_only": true
+  },
+  "settings": {
+    "source": "Real r12 Phone 3a Camera UI via ADB screencap",
+    "crop": [
+      0,
+      126,
+      1080,
+      2352
+    ],
+    "gallery_thumbnail_redactions": [],
+    "screen_only": true
+  },
+  "settings-lower": {
+    "source": "Real r12 Phone 3a Camera UI via ADB screencap",
+    "crop": [
+      0,
+      126,
+      1080,
+      2352
+    ],
+    "gallery_thumbnail_redactions": [],
+    "screen_only": true
+  },
+  "more-modes": {
+    "source": "Real r12 Phone 3a Camera UI via ADB screencap",
+    "crop": [
+      0,
+      126,
+      1080,
+      2352
+    ],
+    "gallery_thumbnail_redactions": [],
+    "screen_only": true
+  },
+  "expert": {
+    "source": "Real r12 Phone 3a Camera UI via ADB screencap",
+    "crop": [
+      0,
+      126,
+      1080,
+      2352
+    ],
+    "gallery_thumbnail_redactions": [
+      [
+        89,
+        1954,
+        214,
+        2079
+      ]
+    ],
+    "screen_only": true
+  },
+  "exposure": {
+    "source": "Real r12 Phone 3a Camera UI via ADB screencap",
+    "crop": [
+      0,
+      126,
+      1080,
+      2352
+    ],
+    "gallery_thumbnail_redactions": [
+      [
+        89,
+        1954,
+        214,
+        2079
+      ]
+    ],
+    "screen_only": true
+  },
+  "night": {
+    "source": "Real r12 Phone 3a Camera UI via ADB screencap",
+    "crop": [
+      0,
+      126,
+      1080,
+      2352
+    ],
+    "gallery_thumbnail_redactions": [
+      [
+        89,
+        1954,
+        214,
+        2079
+      ]
+    ],
+    "screen_only": true
+  },
+  "preset-library": {
+    "source": "Real r12 Phone 3a Camera UI via ADB screencap",
+    "crop": [
+      0,
+      126,
+      1080,
+      2352
+    ],
+    "gallery_thumbnail_redactions": [],
+    "screen_only": true
+  },
+  "presets": {
+    "source": "Real r12 Phone 3a Camera UI via ADB screencap",
+    "crop": [
+      0,
+      126,
+      1080,
+      2352
+    ],
+    "gallery_thumbnail_redactions": [],
+    "screen_only": true
+  },
+  "time-lapse": {
+    "source": "Real r12 Phone 3a Camera UI via ADB screencap",
+    "crop": [
+      0,
+      126,
+      1080,
+      2352
+    ],
+    "gallery_thumbnail_redactions": [
+      [
+        89,
+        1954,
+        214,
+        2079
+      ]
+    ],
+    "screen_only": true
+  },
+  "video": {
+    "source": "Real r12 Phone 3a Camera UI via ADB screencap",
+    "crop": [
+      0,
+      126,
+      1080,
+      2352
+    ],
+    "gallery_thumbnail_redactions": [
+      [
+        89,
+        1954,
+        214,
+        2079
+      ]
+    ],
+    "screen_only": true
+  },
+  "video-controls": {
+    "source": "Real r12 Phone 3a Camera UI via ADB screencap",
+    "crop": [
+      0,
+      126,
+      1080,
+      2352
+    ],
+    "gallery_thumbnail_redactions": [
+      [
+        89,
+        1954,
+        214,
+        2079
+      ]
+    ],
+    "screen_only": true
+  },
+  "video-fps": {
+    "source": "Real r12 Phone 3a Camera UI via ADB screencap",
+    "crop": [
+      0,
+      126,
+      1080,
+      2352
+    ],
+    "gallery_thumbnail_redactions": [
+      [
+        89,
+        1954,
+        214,
+        2079
+      ]
+    ],
+    "screen_only": true
+  },
+  "video-quality": {
+    "source": "Real r12 Phone 3a Camera UI via ADB screencap",
+    "crop": [
+      0,
+      126,
+      1080,
+      2352
+    ],
+    "gallery_thumbnail_redactions": [
+      [
+        89,
+        1954,
+        214,
+        2079
+      ]
+    ],
+    "screen_only": true
+  },
+  "slow-motion": {
+    "source": "Real r12 Phone 3a Camera UI via ADB screencap",
+    "crop": [
+      0,
+      126,
+      1080,
+      2352
+    ],
+    "gallery_thumbnail_redactions": [
+      [
+        89,
+        1954,
+        214,
+        2079
+      ]
+    ],
+    "screen_only": true
+  },
+  "dual-view-pip": {
+    "source": "Real r12 Phone 3a Camera UI via ADB screencap",
+    "crop": [
+      0,
+      126,
+      1080,
+      2352
+    ],
+    "gallery_thumbnail_redactions": [
+      [
+        89,
+        1954,
+        214,
+        2079
+      ]
+    ],
+    "screen_only": true
+  },
+  "dual-view-split": {
+    "source": "Real r12 Phone 3a Camera UI via ADB screencap",
+    "crop": [
+      0,
+      126,
+      1080,
+      2352
+    ],
+    "gallery_thumbnail_redactions": [
+      [
+        89,
+        1954,
+        214,
+        2079
+      ]
+    ],
+    "screen_only": true
+  },
+  "dual-view-current": {
+    "source": "ADB screencap, real Phone 3a r12 Camera UI",
+    "original_size": [
+      1080,
+      2392
+    ],
+    "crop": [
+      0,
+      126,
+      1080,
+      2352
+    ],
+    "redactions": [
+      {
+        "region": "Gallery thumbnail",
+        "bounds": [
+          89,
+          1954,
+          214,
+          2079
+        ]
+      }
+    ],
+    "status": "Captured UI, not feature verification"
+  },
+  "dual-view-controls": {
+    "source": "ADB screencap, real Phone 3a r12 Camera UI",
+    "original_size": [
+      1080,
+      2392
+    ],
+    "crop": [
+      0,
+      126,
+      1080,
+      2352
+    ],
+    "redactions": [
+      {
+        "region": "Gallery thumbnail",
+        "bounds": [
+          89,
+          1954,
+          214,
+          2079
+        ]
+      }
+    ],
+    "status": "Captured UI, not feature verification"
+  },
+  "dual-view-pip-moved": {
+    "source": "ADB screencap, real Phone 3a r12 Camera UI",
+    "original_size": [
+      1080,
+      2392
+    ],
+    "crop": [
+      0,
+      126,
+      1080,
+      2352
+    ],
+    "redactions": [
+      {
+        "region": "Gallery thumbnail",
+        "bounds": [
+          89,
+          1954,
+          214,
+          2079
+        ]
+      }
+    ],
+    "status": "Captured UI, not feature verification"
+  },
+  "dual-view-front-main": {
+    "source": "ADB screencap, real Phone 3a r12 Camera UI",
+    "original_size": [
+      1080,
+      2392
+    ],
+    "crop": [
+      0,
+      126,
+      1080,
+      2352
+    ],
+    "redactions": [
+      {
+        "region": "Gallery thumbnail",
+        "bounds": [
+          89,
+          1954,
+          214,
+          2079
+        ]
+      }
+    ],
+    "status": "Captured UI, not feature verification"
+  }
+}

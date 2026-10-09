@@ -1,0 +1,9 @@
+{
+  "hiddenapibypass-6.1.aar": "e3161dd21c97a4540b1698a33f7062aeaa1450008e1e2176070e5380f7a6324c",
+  "hiddenapibypass-6.1.aar.sha256": "ea4a821672d2a0a1771a2e37cb912d2500fb347ea2351415b405a8cbeb33d244",
+  "hiddenapibypass-6.1.pom": "55109914ea9c6ef31c903198e9af0b671be208412a1539bfab025ff47d9f9597",
+  "hiddenapibypass-6.1-sources.jar": "3da76de7a8a84f2b078461770e9804681c2e25e3a2c482ed84f819530340a801",
+  "coordinate": "org.lsposed.hiddenapibypass:hiddenapibypass:6.1",
+  "commit": "71aaad4ce558530b4788da67d0e3d9bb3596e9d3",
+  "maven_sha256_verified": true
+}

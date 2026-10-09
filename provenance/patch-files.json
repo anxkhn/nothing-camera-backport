@@ -1,0 +1,282 @@
+{
+  "AndroidManifest.xml": {
+    "before": "cd9bee9bf649b3c0d6b42846c95b2029f4af9e2210cc624796974092b56e107f",
+    "after": "14e3ed4dcde00f0efdf91070eac55a2e3052612d510a91166f19e1b944ce405f"
+  },
+  "res/values-af/strings.xml": {
+    "before": "d955bc92e04d05dd0cc5923487321c567730aab6003446141dadc7f54ae2d3ac",
+    "after": "aba33238bcddeeb313b83564b84b3bacf759042b67c4b0c109f2ad04596bd5f6"
+  },
+  "res/values-ar/strings.xml": {
+    "before": "85981cac85e9bb4655b1982fcda41fc00f622194d8bd87c3f54272906467a084",
+    "after": "b2c6da17a1a7624fc68340f2b692b2b65b08b98a4853e83f79a24d3faadf2f39"
+  },
+  "res/values-b+sr+Cyrl/strings.xml": {
+    "before": "20cb5d634384bfa21b90a4a2183417312f90ff1def7a1896acffc8ba26155c75",
+    "after": "192d614376d4b1a69f86ed3724f2e86729e5b2c1af30b50f7432d05b92ec62ad"
+  },
+  "res/values-b+sr+Latn/strings.xml": {
+    "before": "f18334434395b1d768a4d67636a957f4b53c8aa676498c6109be7f1886af06e7",
+    "after": "72191cdd71556efea03ccc0db03aa2bc91aa5e616545e835db22fe39b6a72b7b"
+  },
+  "res/values-be/strings.xml": {
+    "before": "cf48774c7d85eccc4bbf6aebd183f2918ec057f95788e24183abe584255401ef",
+    "after": "ad0c5242a6e78769d25c4ad82984138481e0a88e7aec5c997ed7fc93b6d51620"
+  },
+  "res/values-bg/strings.xml": {
+    "before": "7f9c5175b3d6b2c3e6b9f2d60bd4105a0717f36aebb7ba486ca2a18501e63cf9",
+    "after": "9345bfd118b799ffcfe5d0b3d4a60a76e2f25250a15b4f5decfd6b1ff773e494"
+  },
+  "res/values-cs/strings.xml": {
+    "before": "3f0c4f85c6f1d055c3ce2e00d16f6f10642f026b1f14f083951e76dda7444caa",
+    "after": "a549b37a3672029f5ec5891f1d20490828a2647bbb5c782cc2588a447546f3cd"
+  },
+  "res/values-da/strings.xml": {
+    "before": "bb39fd39654e94b8c378a55a1c254a262cc94b519bbdde5e1bf3ea47c11a1897",
+    "after": "f24d42724180d55add9a3468e540f2228812c8e81e6c8d9a0cd7d2aebd2b2218"
+  },
+  "res/values-de/strings.xml": {
+    "before": "5a4cade1db9f8e2c8b38bf56c36eb3cb1584618d7cc38f45843df2f9e908b6c7",
+    "after": "4752f1ce3ff6ec01cf24cc1c81780d8dee10f25524748016d9a3cabb51c2c0a1"
+  },
+  "res/values-el/strings.xml": {
+    "before": "650365f7642960965488f4e3ae197eecfeae853498c7c825c6f94939062e3f88",
+    "after": "69be1c681496596c883a412ba5107ab685bf56c9bcd375eda0b5c262752a35c8"
+  },
+  "res/values-en-rAU/strings.xml": {
+    "before": "1692b93ec71c9fc35e404f1a63b2cbed828e8d3e4b1155c21b37174ea2e1d672",
+    "after": "10801b6b2af148bd3a825aa05c88e49dc62ac0d4bec295cd6fa74480a59b7cda"
+  },
+  "res/values-en-rGB/strings.xml": {
+    "before": "e27215d1def4bb80e905a7f0a0dd6b90d0bc39e205af7ae1a0f795688302f27c",
+    "after": "0681df038ae3808aa25f869a6db764b48b5ca62d86aeadd53585f06fc8b84415"
+  },
+  "res/values-en-rIN/strings.xml": {
+    "before": "d5da111666be6ef92bc46e4ed3ec50e5390a93c9da4470c6378b3d84dc49240c",
+    "after": "7dd53a801ad1e8599b3467688caf426bea83dc6fc710c9beb4f6b5bd9dcc9924"
+  },
+  "res/values-en-rZA/strings.xml": {
+    "before": "f67e663f0781eeb38534553366c50ffab9c4f1eb07bc323218478d6371ed3a28",
+    "after": "79b4dee21d5e11e9c3b7a4af8687919d878ac3dc5cfaddead71ac89341e323dc"
+  },
+  "res/values-es/strings.xml": {
+    "before": "5433eeca6f9383728f59bd0d0dec4ec9aabfa407c65dc863a4c07f0215fd989b",
+    "after": "6dcba4f5cb33afee25e26af1981b89d211654cae6d95b1c572be72e4a1c9c3ba"
+  },
+  "res/values-et/strings.xml": {
+    "before": "5be8c870688853419e4d6c282e3e323c2ad6d7b214e2f854673641f60b2d02ba",
+    "after": "65d339a6f18a00ad53892b7fbc8463e6b61b8ac05b41adb62a0534578dabcefa"
+  },
+  "res/values-fi/strings.xml": {
+    "before": "0fc1b9bc6845a651c4e742335ba5e062abe60ab8af8e18f1ab15a93cf4400b67",
+    "after": "7b617f9437c269e666a8273b402ed244d81b2933a41fd8615c86f2f087151c8a"
+  },
+  "res/values-fil/strings.xml": {
+    "before": "4e064b5b3fe1a9c4cb9e52235cbbb93187fef9756832ecfaceac7bfab52590b0",
+    "after": "6bc1cbbc4a06a2617a6c49ff35cad2e71c4ed21b9695923e075f0f66b3148fbd"
+  },
+  "res/values-fr/strings.xml": {
+    "before": "4315d17b5808f4935df4f225db2429bc26380d9e4769b87e24f92ecec40aff82",
+    "after": "4dc093a6c52a804ceece1dbccb8e9423215c1656acd77f0adebd90218a849cd8"
+  },
+  "res/values-hi/strings.xml": {
+    "before": "bfa6369b92461c48e582bfbeeb2bf40e5d790db309252bbf2629747306b8e957",
+    "after": "e686217ecdf9272b83ac7ffe268ebad6cdc8b8574e56fdd7fd37565aefa66fa1"
+  },
+  "res/values-hr/strings.xml": {
+    "before": "537fb5abe1264ff1e84d8fd7c466310b4f403c9c4e5614ebb991c44ab20d1cab",
+    "after": "75af85945bb3c44f708a8915dbd95a945be476f3e6160bae6007971dd2a86a88"
+  },
+  "res/values-hu-rHU/strings.xml": {
+    "before": "487b1fc1a7236f0e76294d50635a8d9166944b4f50dd001d416d615b989e9140",
+    "after": "709f69230f38cddf48fc69074c90598fea07dd30c9bab1c93430314110322179"
+  },
+  "res/values-in/strings.xml": {
+    "before": "203194d2334da834b90d393a7b1a1d1938b9ef24ee091a6ca756289e04bdaa2b",
+    "after": "cfc301cf40addfec71818cfea8c0622a792bdec4d375f8d01efeeb2d95f1287e"
+  },
+  "res/values-it/strings.xml": {
+    "before": "a483acb04d0a7bf9cd2d9dce8b701b5f148097e4d7b13771f96be2bcdfbfae68",
+    "after": "8fd50e603835944fcedbffc72bea73bfa743cdd9a13231a17a4987b66f6156e9"
+  },
+  "res/values-iw/strings.xml": {
+    "before": "933cedbfc1beb2a9816b9207ec6cb67a7c89e4718149f566b5455e6a7e948d20",
+    "after": "fc07a1d146e0536dbc67a0b712d7f143be2f4bad5540f7e5cc53721c59f81f9e"
+  },
+  "res/values-ja/strings.xml": {
+    "before": "bc33b334071988476e12379ca2bc2ba32fb80021ddc0b9c28f2b1fa7942b6cab",
+    "after": "a33b9e842bdf058476dd6ad6e45991b3737aeaae0997e2e397932be40e845210"
+  },
+  "res/values-kn/strings.xml": {
+    "before": "5d467f4ffafc24b9b19a0e04610d8991ada08627c8c2079ce77c4142ca26e282",
+    "after": "710e44de054478ae5d563708642580026b755aeed01da83aba1dfe7bdb782a7c"
+  },
+  "res/values-ko/strings.xml": {
+    "before": "cda9b037edd6fca811cb32e003337fb051bc65714473212e3e9d3f96dd0ab167",
+    "after": "f844892c684ef8472ed8a3f017af18b5bbaf6d176c09d3d62c13bb2b45112664"
+  },
+  "res/values-lt/strings.xml": {
+    "before": "86c855216d1e837c5e75b2308916cd17d53da9d5f0002ccc9ad523da7da9863a",
+    "after": "7d27258d2d7b30bdf2a20db46c360ef90e4b857735aab1bfc1a638bfdeffc562"
+  },
+  "res/values-lv/strings.xml": {
+    "before": "2aeb869db636785992c498e37caf3c52bba554e54ee881e57ec2025c91b6d222",
+    "after": "6364b1c816b998ee6249bf40150b79c53f2d9923ab4bed150bba22ae74edaed7"
+  },
+  "res/values-me/strings.xml": {
+    "before": "20191f2ba6217cd5f31ddb2ae0a034175da58d49c24dedc259f778549448c6f2",
+    "after": "9e5b509b33bbe0ac9b1aa555439a73995311c072e72c0bfb66148479812e0677"
+  },
+  "res/values-mk/strings.xml": {
+    "before": "e5c3462df4a0d2553f285837bcaa19456daf477d3a79c04987daf731b7184e36",
+    "after": "d5534be3fc61ddcb72613f33ddffbce72aad043cd341686b1e2be13c496ce582"
+  },
+  "res/values-ml/strings.xml": {
+    "before": "0067c30dab046a6fe09a7e7312317a19a7313955aa1b054c65050194bbe30479",
+    "after": "fd0608a05b74b2523a90365d997ceeb758234c6c04b33eda8173ee90f9ae7726"
+  },
+  "res/values-mr/strings.xml": {
+    "before": "d6efcc803e5603d4fe7038a2730e28d5697cf4a64f057974aaa5681131a2928d",
+    "after": "9be813c5266630b4a1ddd8305540beabbde179e97d2e4e263dab697bc977265c"
+  },
+  "res/values-ms/strings.xml": {
+    "before": "ce2f7c243a09aad9907e4213af21d8bd567be5a219b5275f9ffd9ce0bb247850",
+    "after": "487069c3a1716e7f00a05b2bd20de7a017a26fbc3157c5022565fa4574d10045"
+  },
+  "res/values-mx/strings.xml": {
+    "before": "91e55ccb4a3aa7656332238401ac0daf014605ba19c08bbca0be6044b819ee74",
+    "after": "d4ba8c77dc111c5271e58276c6aad304814e2e4cbcc204f7410097e4f2e9adf3"
+  },
+  "res/values-nb-rNO/strings.xml": {
+    "before": "f9ae724e748896b10bfeb1f38d580ab43edbcefcf6a9c25296dc0ddc81d05972",
+    "after": "5ab00238e58478a74fbad30939abf5010921e00429e4ceada44179942efad9f4"
+  },
+  "res/values-nl/strings.xml": {
+    "before": "3d31cec2858d29a728114893307f574ae5d5572f22dfc5dac574f3d322263724",
+    "after": "7de5cc086063e32e117b2b26a6c39f0f6b7645a37a902ccce5f969ea5d697464"
+  },
+  "res/values-pa/strings.xml": {
+    "before": "e42d1191271357014145ed0cc6292df453c1ec20f260ecc7ec175edc40eb54aa",
+    "after": "4c2ccb46bb9dea507579c346cc4792ed2474fbb9292760a51edd79b69089c2a8"
+  },
+  "res/values-pl/strings.xml": {
+    "before": "4c7f5b0d6c2498af403be60f8b633e6ff10f2fe18ce6e59d8d99661c7ee4f665",
+    "after": "b4a2df04fbb358e654800752b2fb182329c35d8bc50b2e0f57e575f760daf43c"
+  },
+  "res/values-pt-rPT/strings.xml": {
+    "before": "14f53ba2a59d08ab27116015a7a4ddb31e9d3383bf01d474520d4e02b14afe00",
+    "after": "b6bbdf63519a0e64031e67b8c1304827ec21a9794c61e956d1eab753ff2baa71"
+  },
+  "res/values-ro/strings.xml": {
+    "before": "aaf9751f84d3492608ee121ac369a2a1ddddb2e3863e6ed9f59449d4c94aed7f",
+    "after": "725c2b06df352a406bdb4865971c451a5e2b8bad63b7d36bdf854761a7ca01e6"
+  },
+  "res/values-ru/strings.xml": {
+    "before": "5d12a8cc637e1331cfd5e8873b0267dd395993a3d345db6d2723729e16053b48",
+    "after": "369621a8e45d639769f2d25c6604736761debf5a145c878fc8cf7e049d29e552"
+  },
+  "res/values-sk/strings.xml": {
+    "before": "3825708a53e1f3d6a80b304ea2e419e043d5886405670665b7e936a3ff920eca",
+    "after": "5334d7fef3b0006480cddb133e1a24e54986c4c3f69b5d7f3cf1566acfa29dd7"
+  },
+  "res/values-sl/strings.xml": {
+    "before": "0e83f2ddea43c0a3e4d9603a4a124645da0f02685c6c7e6b0be8da44d76a14af",
+    "after": "5dff9170c8b7d1a0c11e8ef27dbc8c92f0e96161c4a864caed716f7e05a07b26"
+  },
+  "res/values-sv/strings.xml": {
+    "before": "ce81119702a4689b76ae930cd1a274d0d4e82718fe40836412f149796d8cc4aa",
+    "after": "a297fbf008189ba790b6220d044423f0356265b7922ad689728a2e3604c89976"
+  },
+  "res/values-ta/strings.xml": {
+    "before": "d621948edce80332f87ad2b5d9556a04fb418d59ef371f475cc3c2ec21733aa0",
+    "after": "b4bde7a0de9b3868eabf9e317e73eeee1fccea4e43ad792d408fa04f2a77fe5a"
+  },
+  "res/values-te/strings.xml": {
+    "before": "80a7bda8f6dd8c104ae56379da9940d843d6fd315318326fde498c4e4d7d1655",
+    "after": "28f10b223afe56efff207abcd2b0d6195d47303f9ac94e480bc7e022d63e87ec"
+  },
+  "res/values-th/strings.xml": {
+    "before": "4d2ec606120d7001189ce62ec7e5323b36e3c16456274e8c43696f4f31a04b68",
+    "after": "b2f0cfe6f97b82102ac77c2b50baaf936a61e48a52a0969b7f59035543ffe704"
+  },
+  "res/values-uk/strings.xml": {
+    "before": "0343cd2c46412a49890372dbc5082be7fa05a3cd993677c4c5c3f140b4705d78",
+    "after": "b22cfb2c4124cd086cc2aba8ec2f30c4e4e494fcbc842ce5a1a8afb03d0316ea"
+  },
+  "res/values-vi/strings.xml": {
+    "before": "af4e333fb66def31f42d326ca8d5e89b896172cec35afc64367597f8c7759eff",
+    "after": "8aae28a19511ebd39abb70af2b94f20ede2977c10a508e2ef06fa8c551e675bb"
+  },
+  "res/values-zh-rHK/strings.xml": {
+    "before": "4d70902141d5ba308c16939ab5ba287e22da5adcfe752ea4b80fa330a3e5918d",
+    "after": "e2c66d36dea02da1f68f1b6301e4dce211b92301073602ac273eac5e86fe3666"
+  },
+  "res/values-zh-rTW/strings.xml": {
+    "before": "724b8c835c99f5a57e7c92400d241860ebdd354afb98a22f37e9c2add0b40ffe",
+    "after": "1f78a0e66801cdff0f9d218f5100cb2efe22c5076a898c715a0a43a80066c9c3"
+  },
+  "res/values/strings.xml": {
+    "before": "d1a9cafb9431ca5bbc17681cb71e23de062ff913c395cd3e4b31f18384d1b8d3",
+    "after": "d9edcfe5bcb5b031963443037ed78268b769520c9589e0c65dfd050a40013dbd"
+  },
+  "res/xml/camerashortcuts.xml": {
+    "before": "cd440952098a3808cef7a6c1b22298098157bcbb9743b148e28e83c880b17e71",
+    "after": "574b5d79d6fb433bbc23f9544e95c7199af65b60b6c40f428cf34fc9d6269fcd"
+  },
+  "smali/com/nothing/camera/BuildConfig.smali": {
+    "before": "476ad1ab302e68255c7684f25b76013d055ca57099215f87d9b2d14b00209942",
+    "after": "4f9d159a2a95d8dbb25e608047db22ecae4007182aea99a1b1c2c88d3844030a"
+  },
+  "smali_classes3/com/nothing/camera/activity/CameraSettingsDialogueActivity.smali": {
+    "before": "22f1379f28e5405b8664ea84522f7667c8ed1e69fb60aed72db00d1a2484e589",
+    "after": "3f4531919d27732772ddefac339b12f95c614960ef6ff7973c28e259bbe2d94b"
+  },
+  "smali_classes3/com/nothing/camera/activity/CameraShortCutActivity.smali": {
+    "before": "b31a26b8379fe34af120368a5d3348139cecbcc9d09c4378847b476d3578fabc",
+    "after": "0473938d5bc3dbe7bd258824c2b2e38b949ef6d852c4afa5396dd868e089ca27"
+  },
+  "smali_classes3/com/nothing/camera/activity/VoiceCameraActivity.smali": {
+    "before": "8a850498faf535dd2a44cc09e51c996b60283fc7d20384d03db0b2cf527c13d1",
+    "after": "2c7b28b6c977285d0c4045804b577dc36e1eb796279054f52e357b9ff97e0dc1"
+  },
+  "smali_classes3/com/nothing/camera/activity/VoiceSecureCameraActivity.smali": {
+    "before": "7183877b3e511eea9d55c5df6bdec516369bbb7d42dfcaa40517a4d52ece62e5",
+    "after": "3080a5e1c22a4e11bbd7f3f49ef4c752d0418e840a08f86a5723571cc5fe32ec"
+  },
+  "smali_classes3/com/nothing/camera/app/CameraApp.smali": {
+    "before": "b794e060f89737916b0c1417be485c8acb2e27cf37867a38e74ed1322fdfeccf",
+    "after": "2af9d7fdb3a272eaf87a4ff6920e18897e6f63e5d4d36345726187aae34bd815"
+  },
+  "smali_classes4/com/nothing/algolib/cameraufs/UFSClient.smali": {
+    "before": "e1e1df7d8b8a1280cb2c0b5755a1ae1396ecea2b5766796e78550563fa49a0d2",
+    "after": "31d99c79b9cdb471a0d2bd002cb8dbc6321652db79698552d94e2f380209ce06"
+  },
+  "smali_classes4/com/nothing/algolib/cameraufs/UFSManager.smali": {
+    "before": "d76c0fdcdf0d3dab8164616aa6ac16cbdc59e3ac010912988fbedb28a49b5a9c",
+    "after": "9a90714d7d62de57ffebdb17a16587e934e3772573c562e15c7f3f44a12bc384"
+  },
+  "smali_classes4/com/nothing/algolib/offlineproc/NtCameraManager$NtCamImageProvider.smali": {
+    "before": "5f08509157f834b444716774291d5d7c9f9e54015db3fb1fc23a16db19d13215",
+    "after": "1f686c024b1c0892aa5ec19148adc653a5fd355968e6dcf05a9debc0b1b8e29e"
+  },
+  "smali_classes4/com/nothing/algolib/proxy/ExtensionsInterfaceProxyWrapper.smali": {
+    "before": "56f9c41b924e8abf50c07d919fee3f068a34d6c109fa09fdf76ec19449a6d2a1",
+    "after": "d6173943b2de4f5af44423621d78e40aa55198ab9453914a141bf9c945903bdb"
+  },
+  "smali_classes4/com/nothing/camera/gesture/GestureRecognizer.smali": {
+    "before": "718fd2bebe4b82610c362039dd319d10a4f4f893c69e4ad221739297eb825645",
+    "after": "3e5fca4514eb11d4bde1c4796c5858caf45122ea6885ffd217d12068c2276846"
+  },
+  "smali_classes5/com/nothing/common/api/googlefilter/activities/PartnerContentProviderCaller.smali": {
+    "before": "80e2703b3c66e19ad60880283868b48ab7c42390435a80a6f5a0f0d8b10c64b9",
+    "after": "b4853017de4ec498c6691178bc430832e21a4832987a2b24b6d88ddb5271c474"
+  },
+  "smali_classes5/com/nothing/common/shortcutwidget/config/CameraConfig.smali": {
+    "before": "1bb492fc357f603ca4ae12557ed9cd82b27821a30537fc6371ff80cb9562d922",
+    "after": "74ed243be0407eb61fd3a6f81934d45a7a9b1ee0f470fe39beb6b56a99ebb313"
+  },
+  "smali_classes5/com/nothing/common/shortcutwidget/provider/CameraWidgetProvider.smali": {
+    "before": "ed2124c7bd2103364c2f0877c2131960040d62caa111073a14ab887abb4ac993",
+    "after": "e2a99c1b8adcc703338cd59c77026ee45a01894c67bd78889d7bf64d15e097ba"
+  }
+}

@@ -1,0 +1,394 @@
+{
+  ".github/workflows/checks.yml": {
+    "bytes": 438,
+    "sha256": "d6a2899443dd65b0582bc5b3dc17a89dea34ae2074336dcaf4ac0108dd72919a"
+  },
+  ".gitignore": {
+    "bytes": 131,
+    "sha256": "1c9e450d3b6383bae7a2ba5086122d616339e34d43e333008a47e743dbd3dbc5"
+  },
+  "LICENSE": {
+    "bytes": 1360,
+    "sha256": "eab032f15c70d655a801bf5a2890f6b9cc12d552c8377e00073d9b57dfac18a8"
+  },
+  "README.md": {
+    "bytes": 5236,
+    "sha256": "a6a808da02466fd3612ec1011ecb6b7fa29fa994e699cd2b08ef14be6d81c4d6"
+  },
+  "assets/README.md": {
+    "bytes": 1867,
+    "sha256": "eacaca0217396620e514a2f7b2e793be63505176a74d4c417a5ca9c35a687021"
+  },
+  "assets/header.png": {
+    "bytes": 51838,
+    "sha256": "7b21d036e57f0421c673b903e41ca134fbe1b0770f93de69ac15153634a2f19f"
+  },
+  "assets/header.svg": {
+    "bytes": 80699,
+    "sha256": "273646d728a881641d787018b3f7af6493a519d67fb33ff69e88b76eec0adeec"
+  },
+  "assets/install-infographic.png": {
+    "bytes": 98801,
+    "sha256": "844cca4f62abdeecba0c630ff2bece1acb8248213cacd5ce146ec38494384dc1"
+  },
+  "assets/install-infographic.svg": {
+    "bytes": 130454,
+    "sha256": "80e9f9daecbaa1eb922958729a4b7db70bc120b24e3cb56a569766846c84628e"
+  },
+  "assets/manifest.json": {
+    "bytes": 1853,
+    "sha256": "ef8c1f7c9ebfe7e8d6cf423dce67bb842c069d9fdd29d651e0fc7d60de707a12"
+  },
+  "assets/processing-infographic.png": {
+    "bytes": 95843,
+    "sha256": "6da10e266d0ea5f72fb7b600a3a87d4f51781a4ced3e7f808edca12c0405f737"
+  },
+  "assets/processing-infographic.svg": {
+    "bytes": 147020,
+    "sha256": "9b09c2ba4c70b9b1eba6b0e8544c6182ebac340e2a6271801e93def61f08cf77"
+  },
+  "assets/screenshots/README.md": {
+    "bytes": 2755,
+    "sha256": "8baf73cd5cf57ba98828401f032e6679bcea25102634c50a4fb92225b784e504"
+  },
+  "assets/screenshots/dual-view-controls.png": {
+    "bytes": 995792,
+    "sha256": "e796783454749402e0ab72bd3ce4021458781d6c9206c73e912c281a88e23085"
+  },
+  "assets/screenshots/dual-view-current.png": {
+    "bytes": 1058775,
+    "sha256": "a96fbf03efdabb6a5a4be3deffdd9bb89e347351291109877c66e0c42ab8d6aa"
+  },
+  "assets/screenshots/dual-view-front-main.png": {
+    "bytes": 2504553,
+    "sha256": "2abde0b76da81be6bab91573a71bc8dce2408b406a09c45aa9b16e1a7d420849"
+  },
+  "assets/screenshots/dual-view-pip-moved.png": {
+    "bytes": 1063137,
+    "sha256": "64bb4fb75f88ffafcfd2c0b2c892edca2d93bab82aaed143f66652e7ff09afc3"
+  },
+  "assets/screenshots/dual-view-pip.png": {
+    "bytes": 1068994,
+    "sha256": "3cd35e15aaa47b28bce21b7a88780a2ac6560df7cbe115a4ff5367a78d59bcf1"
+  },
+  "assets/screenshots/dual-view-split.png": {
+    "bytes": 1319842,
+    "sha256": "9f761d382b8bc56689f27ff7b4ed1da480f36bb8bfe9dfbf5ba54fdc5549d2b9"
+  },
+  "assets/screenshots/expert.png": {
+    "bytes": 1651542,
+    "sha256": "e1bf6065c4de3ca4fa1892f358c26efd96622890f95ab6579c3a4eed2d4d4f60"
+  },
+  "assets/screenshots/exposure.png": {
+    "bytes": 1359286,
+    "sha256": "30c65d82a2c725d466726d142159c50b6df477de13e663e2c3339f39fc5453c8"
+  },
+  "assets/screenshots/filters.png": {
+    "bytes": 1353749,
+    "sha256": "cea05c879a0d4eb28d1027797bf90151942e4d5347d149cd8ed7eaefcbfa044c"
+  },
+  "assets/screenshots/manifest.json": {
+    "bytes": 7329,
+    "sha256": "6a4f12ffc617df33500661db65d55dfc2cb824da04444a4295946f772c1b4487"
+  },
+  "assets/screenshots/more-modes.png": {
+    "bytes": 1024274,
+    "sha256": "609c710cd864fdc909394899bd396186c4bc3b946942f597064c3641e3565e76"
+  },
+  "assets/screenshots/night.png": {
+    "bytes": 1686538,
+    "sha256": "b4b64d52faf9eed9e7c629d9b67073a2a6c6591cbeeb28e341819138c9956678"
+  },
+  "assets/screenshots/overview.png": {
+    "bytes": 470465,
+    "sha256": "1db543ea896107ba4105871dd56599fe48e52f3997421c4e03d27f3c819fe552"
+  },
+  "assets/screenshots/photo-controls.png": {
+    "bytes": 1105306,
+    "sha256": "38a6ff57063172a571e92263a927b3b975e3faaf23d90b44ca65983219bf195b"
+  },
+  "assets/screenshots/photo.png": {
+    "bytes": 1352732,
+    "sha256": "d20f8218bbebe1a78202ea6d1793b9d124e96f6b9db45ca70e192934fda84fd7"
+  },
+  "assets/screenshots/preset-library.png": {
+    "bytes": 1068911,
+    "sha256": "eaa82b9359d527c317cc6678479f5a68375dc973cf86ee68b71c973e642fe557"
+  },
+  "assets/screenshots/presets.png": {
+    "bytes": 460297,
+    "sha256": "3375f691a53402beae864487f03e6b30b2d0f4e8e077d64c71f6873808ee42e0"
+  },
+  "assets/screenshots/settings-lower.png": {
+    "bytes": 114449,
+    "sha256": "accc929177560d8566de2c9434fa626107658e1dc21423028bb9a643a97a0205"
+  },
+  "assets/screenshots/settings.png": {
+    "bytes": 105132,
+    "sha256": "0cafd2381a6c0323c6075f8c95a6c814c1ab17d6d3b511ef68912f88c5d59cf2"
+  },
+  "assets/screenshots/slow-motion.png": {
+    "bytes": 1686535,
+    "sha256": "dbf8c0a1a4bcf3ed9346877016369632df6b08a307319769adf8af0d43ec1da8"
+  },
+  "assets/screenshots/time-lapse.png": {
+    "bytes": 2025005,
+    "sha256": "594392f4b74607080f55185ea91a14056064a2115ca51524a65753f0034a68e5"
+  },
+  "assets/screenshots/tuning-controls.png": {
+    "bytes": 1341188,
+    "sha256": "90d170fe08ad0dc0a21236554e01042ee2e59e1d8efeda9535fac73ca0b5b39b"
+  },
+  "assets/screenshots/tuning.png": {
+    "bytes": 797766,
+    "sha256": "1a12b3949ed12a729f82ee839813525e0621331fa335b791399ae6828484531d"
+  },
+  "assets/screenshots/video-controls.png": {
+    "bytes": 738598,
+    "sha256": "989355359ca87ebaa985b4ee29ebdee8c28ab288efd5b1907af8a36e7d4c3abd"
+  },
+  "assets/screenshots/video-fps.png": {
+    "bytes": 1710343,
+    "sha256": "1b94c5374cb169a6e9de5471c114b9cef2f7757758addd660bb4d62a69642188"
+  },
+  "assets/screenshots/video-quality.png": {
+    "bytes": 2373468,
+    "sha256": "a441456b76dfed4f89de370b296c3f71f2af31926daa26073e4f1fd6f5702034"
+  },
+  "assets/screenshots/video.png": {
+    "bytes": 2407536,
+    "sha256": "4b8ff9417bad1145933f770b7dc6f6643c4b03b2820f3541b16dd1f5e40b9a9d"
+  },
+  "assets/social-landscape.png": {
+    "bytes": 63795,
+    "sha256": "9a4eb37aad5922c4e9953bcbb4ed334c71a020f30fc9070ce904ae4d1555a2f6"
+  },
+  "assets/social-landscape.svg": {
+    "bytes": 62849,
+    "sha256": "6ea37039ea7c7b6b49519145ea2e5d14456cb1f92c45a3e56378ed2e37c296ad"
+  },
+  "assets/social-portrait.png": {
+    "bytes": 79601,
+    "sha256": "1eedce2067d80e3cf0470d55fe0aa26b69adc51ce26eb71f5624962ceec8963c"
+  },
+  "assets/social-portrait.svg": {
+    "bytes": 70892,
+    "sha256": "89c64b98162e73febf49df17dfade09978f20b918af22231d9a750c02f23b337"
+  },
+  "assets/social-square.png": {
+    "bytes": 55815,
+    "sha256": "f0edc162293277aa451bacc2bb06c3c907275d52e9a7344ffdcb307970d18ada"
+  },
+  "assets/social-square.svg": {
+    "bytes": 68296,
+    "sha256": "0828bb28dea5ffe0392cf4bb6dbbe1d3ba37e0751def07dcf816b106c421106e"
+  },
+  "assets/ui-banners/README.md": {
+    "bytes": 1253,
+    "sha256": "12de257091e821d87f6373887ddc813b3a8ac67c30d8652604d71f360d59ea58"
+  },
+  "assets/ui-banners/banners.html": {
+    "bytes": 231437,
+    "sha256": "674f161c5fb52a8551dfe063b2d5a126de4a1629219c29a2e3c250d16ecf06d6"
+  },
+  "assets/ui-banners/header.png": {
+    "bytes": 223916,
+    "sha256": "d5e238d85bbefcd66542ec8767957b21d133423c45846a8996667308479d43ce"
+  },
+  "assets/ui-banners/landscape.png": {
+    "bytes": 444779,
+    "sha256": "154f4d61595c6ba7b9c48f56a77289c7b80d715d3903077666bcf6e1b3761970"
+  },
+  "assets/ui-banners/options.png": {
+    "bytes": 485737,
+    "sha256": "4cf191590b4388bf3ee38aea8583ff0d8b3a459df394fbd2428ed05d449230e3"
+  },
+  "assets/ui-banners/portrait.png": {
+    "bytes": 636147,
+    "sha256": "5c3c69800015eaf2695526c59163a76b171b11f8d0ca175d1c4fe628de6849de"
+  },
+  "docs/BUILD.md": {
+    "bytes": 14865,
+    "sha256": "5cd73407bd6a6a6811324abe22e5b14edb9c84dc85f92438c3ea63238278ba56"
+  },
+  "docs/DEVICE_VERIFICATION.md": {
+    "bytes": 5039,
+    "sha256": "974166eb9b02276b89e41d18c7168aa5027d7cb943212fa71859e873bc67138e"
+  },
+  "docs/EXTRACTION.md": {
+    "bytes": 6515,
+    "sha256": "082eaeb41505254fc89d93c09e9b6640f121ef65e461343e35e905beafd7cee3"
+  },
+  "docs/FILE_MAP.md": {
+    "bytes": 7288,
+    "sha256": "535dd27382071587151dbc560b7c4ae18a80b5c2d75d3ab699f1c463176dd0dc"
+  },
+  "docs/INSTALL.md": {
+    "bytes": 2764,
+    "sha256": "05b0857f53c7ced34d692e84b63437f9b9b9d54ffd1fff601ac9aa8a77f611dc"
+  },
+  "docs/REFERENCE_FILES.md": {
+    "bytes": 23130,
+    "sha256": "c25c648bc7581a136072bf56118d5c192220bbf04e54863fd2d2324ce76a1533"
+  },
+  "docs/RELEASE_NOTES.md": {
+    "bytes": 1692,
+    "sha256": "ac768622b608c70e63350af509ec3869fc66973a844f60975d7cac277b2d6d29"
+  },
+  "docs/SOCIAL_POSTS.md": {
+    "bytes": 7260,
+    "sha256": "7cabbb4461b46335529333831f43653a59557c44fc0fa588dde0a7352c53654e"
+  },
+  "docs/TECHNICAL_FINDINGS.md": {
+    "bytes": 16386,
+    "sha256": "9e3543a231b717b1e7d9bbea85a1f72ec83acb0294b87fe8c7fabd41509e9e1b"
+  },
+  "docs/THIRD_PARTY_PROCESSING.md": {
+    "bytes": 42280,
+    "sha256": "809aa35e1f0af7c1ce366e322156066fc24c40db0233021f7086490220ba8cf6"
+  },
+  "licenses/AndroidHiddenApiBypass-ATTRIBUTION.txt": {
+    "bytes": 160,
+    "sha256": "79595c13c399ebd25ee69ad2b98014c3f16c9dae29f6413981da430e5c2d4221"
+  },
+  "licenses/AndroidHiddenApiBypass-LICENSE": {
+    "bytes": 11357,
+    "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+  },
+  "licenses/Geist-OFL.txt": {
+    "bytes": 4387,
+    "sha256": "1781d2806a07d91c4edf4740b88449fab7d0eadad53f7c351b94cd4d4eb8c00f"
+  },
+  "licenses/SCOPE.md": {
+    "bytes": 1424,
+    "sha256": "4f64875a3bd6dd0ee6ddc4315d75916bf2379df24b164043ed803b171cb2a5df"
+  },
+  "patches/r12.patch": {
+    "bytes": 92533,
+    "sha256": "307b02bc899f640492b31e36063836344ab327bb57abd82610358c32acd5790d"
+  },
+  "provenance/firmware.json": {
+    "bytes": 1080,
+    "sha256": "749a6631004dc382fe57ec436dec7856babc00f80db0e6809196fec2832be105"
+  },
+  "provenance/hiddenapibypass.json": {
+    "bytes": 562,
+    "sha256": "fd32f6f7ee8bfbe6ba1197ee065ba1f072612bf6414346588f49aee30237b13a"
+  },
+  "provenance/inputs.json": {
+    "bytes": 428,
+    "sha256": "92770d97a6811564c6a64ad9e393265fa74979e69f1c45d878373e9d71fb16fb"
+  },
+  "provenance/native-libraries.json": {
+    "bytes": 3554,
+    "sha256": "c632822cd3b2201c4fb620ae5cac8dbe6f75dfeabd69e7ed9b612e6526a2ff99"
+  },
+  "provenance/patch-files.json": {
+    "bytes": 14689,
+    "sha256": "1514b1f38b5e5454d79bb48b15a83029e9f07939afdc8be67a2b5d8837e2976a"
+  },
+  "provenance/r12-decoded.json": {
+    "bytes": 8385726,
+    "sha256": "d904bde9ce2ce6e259ae3ac4033abb998e981ff7a2f656fb6576a890639cbfa7"
+  },
+  "provenance/validation.json": {
+    "bytes": 1146,
+    "sha256": "b24e09b62d2572b4340b36b79c95be00921d0e1fca185ed1b60268a17bd56f68"
+  },
+  "scripts/artwork.py": {
+    "bytes": 10486,
+    "sha256": "457e6e9c61a197f67928a2359ccf043f372dcf5cebf4948744884cbe87fe53da"
+  },
+  "scripts/audit_publication.py": {
+    "bytes": 2016,
+    "sha256": "ecc9e0b5f68e7bf4aa8718ada6cb749fc38ebc0e2fcb5ee9f1593724fb5e976c"
+  },
+  "scripts/banners.py": {
+    "bytes": 6893,
+    "sha256": "604c278bbbbd7179439c247c5675d3659c7ef5b9046f940d54d7db6a642d30ba"
+  },
+  "scripts/export_patch.py": {
+    "bytes": 5056,
+    "sha256": "3ee33658e3adaa5f967f82c735d6c32b3d82b51352761111bede9b6e563348d7"
+  },
+  "scripts/extract.py": {
+    "bytes": 4190,
+    "sha256": "07463270d5c967e7bb73b31ec98cde682a1e6531e75d90bd1261661aa7f613c1"
+  },
+  "scripts/local_inputs.py": {
+    "bytes": 1027,
+    "sha256": "f66f165997c6dcadc5917e53183e6d497f822e0de8df5762a520a4954362679a"
+  },
+  "scripts/publication.gitignore": {
+    "bytes": 101,
+    "sha256": "a614d4fc3d404252b40bb33449aae7c441467cc94bc224340d76082626472161"
+  },
+  "scripts/reconstruct.py": {
+    "bytes": 9559,
+    "sha256": "e6fa99b11774216eaada8af686b087e0fd4c937eafae888d2b9b614b7ac99ca4"
+  },
+  "scripts/record_firmware.py": {
+    "bytes": 1263,
+    "sha256": "b82ca34b80be7b5b7f0000434404416ba4987cfc2cd5c6bb1e9cf7172925ec5f"
+  },
+  "scripts/render_banners.py": {
+    "bytes": 1322,
+    "sha256": "1572d83ddc743a296823ce5d7b0b99e29711a003b8a6ff94eb2470d56c0be749"
+  },
+  "scripts/verify_apk.py": {
+    "bytes": 3128,
+    "sha256": "cce479657273dcb7978af634fc37bd4ad4d294c0a8810f20e2c2cdb93d847f3f"
+  },
+  "src/java/com/anx/camera/bridge/CodecInstrumentation.java": {
+    "bytes": 13927,
+    "sha256": "36795496e20b99d03c680b59167c571fa501135480ab02f01f268d2dca9006c3"
+  },
+  "src/java/com/anx/camera/bridge/MetadataCompatibility.java": {
+    "bytes": 2559,
+    "sha256": "d143ecdd8c1b1d0499327dc44846ba9e9a278c82c99584892f761849da447c93"
+  },
+  "src/java/com/anx/camera/bridge/Nos41UfsBridge.java": {
+    "bytes": 18669,
+    "sha256": "60b539dd65891ac803b9bd8670158428e98361dde77278751a0dfda830023695"
+  },
+  "src/java/com/anx/camera/bridge/PhotoOutputProvider.java": {
+    "bytes": 4947,
+    "sha256": "c08976ee15ffbc4e82154ed3b30d0c1977cf173b7b83aecf4c0415ce8ae0c064"
+  },
+  "src/java/com/anx/camera/bridge/PublicImageWriter.java": {
+    "bytes": 558,
+    "sha256": "e855c4e09cd2dbb7d16a4bdf6fef872cedbdd74e3c293d2e511b7316b228ec4f"
+  },
+  "src/smali/com/anx/camera/bridge/CodecInstrumentation$1.smali": {
+    "bytes": 2085,
+    "sha256": "9f7223392bc7c863c29d78f7bc2df9272bd3b862634d3d94f7298120f3ec9384"
+  },
+  "src/smali/com/anx/camera/bridge/CodecInstrumentation.smali": {
+    "bytes": 56122,
+    "sha256": "e3083a5fe666fabe49ec68cd39a447f5dfaf7fa1c057afc174118d725bcabc99"
+  },
+  "src/smali/com/anx/camera/bridge/MetadataCompatibility.smali": {
+    "bytes": 9796,
+    "sha256": "f9dff5d439e2a7d30afc9a198a38fed841ab843fc52f74afbb3e6a423abf0900"
+  },
+  "src/smali/com/anx/camera/bridge/Nos41UfsBridge$OwnerCallback.smali": {
+    "bytes": 5290,
+    "sha256": "b445fbc0b33471e840b83d282201c8e2edf5409c1d9551cd6aecf9f3b9dc7c4b"
+  },
+  "src/smali/com/anx/camera/bridge/Nos41UfsBridge.smali": {
+    "bytes": 87936,
+    "sha256": "cc9b08e17b5d89cf02f65e34108ecc8455c93ba51ddfd6a194f258e2999ae227"
+  },
+  "src/smali/com/anx/camera/bridge/PhotoOutputProvider.smali": {
+    "bytes": 19941,
+    "sha256": "182a3f83e23be1b4ae6b75c7d510902d4792e909ab3fa82f578a5dd4adcf43f5"
+  },
+  "src/smali/com/anx/camera/bridge/PublicImageWriter.smali": {
+    "bytes": 1410,
+    "sha256": "5f01ff74f34271675182f75eaf18b2495c6d4b2a17dfc09324a9537959f6d050"
+  },
+  "tests/test_pipeline.py": {
+    "bytes": 3950,
+    "sha256": "99d58c8058af51ac230112bb45ab826e4a34994ac93f38d59d3cdd05ff6a2258"
+  }
+}

@@ -1,0 +1,132 @@
+{
+  "libcameradecision.so": {
+    "sha256": "6361c10a35058e433e54487f130c4759228ad588a0da5b5f7340ceabacdbfa98",
+    "needed": [
+      "liblog.so",
+      "libc++.so",
+      "libc.so",
+      "libm.so",
+      "libdl.so"
+    ],
+    "source": "firmware:vendor:/lib64/libcameradecision.so",
+    "native_modified": false
+  },
+  "libQnnHtp.so": {
+    "sha256": "123211d8a7750bec20e2590f81d280b771ad6966c40da5cf67a16bcf2e0a9985",
+    "needed": [
+      "libc.so",
+      "libm.so",
+      "libdl.so",
+      "liblog.so"
+    ],
+    "source": "firmware:vendor:/lib64/libQnnHtp.so",
+    "native_modified": false
+  },
+  "libQnnSystem.so": {
+    "sha256": "5a6cc57ccc4d182c8091490cebd91b280e4973ac2f4f9af80d148e7382706b16",
+    "needed": [
+      "libc.so",
+      "libm.so",
+      "libdl.so"
+    ],
+    "source": "firmware:vendor:/lib64/libQnnSystem.so",
+    "native_modified": false
+  },
+  "libarcsoft_aiscenedetection.so": {
+    "sha256": "328363b30df95e607cea41093364006791077c03d1946c1419a819566f3f09ca",
+    "needed": [
+      "libmpbase.so",
+      "liblog.so",
+      "libc.so",
+      "libm.so",
+      "libdl.so"
+    ],
+    "source": "firmware:vendor:/lib64/libarcsoft_aiscenedetection.so",
+    "native_modified": false
+  },
+  "libarcsoft_beautyshot.so": {
+    "sha256": "edec87ccefad98ce7a3c463eea675361813dcc4468d6bf6c4f6359678a37cc24",
+    "needed": [
+      "libmpbase.so",
+      "libvulkan.so",
+      "liblog.so",
+      "libEGL.so",
+      "libGLESv3.so",
+      "libc.so",
+      "libm.so",
+      "libdl.so"
+    ],
+    "source": "firmware:vendor:/lib64/libarcsoft_beautyshot.so",
+    "native_modified": false
+  },
+  "libarcsoft_dualcam_refocus_preview.so": {
+    "sha256": "241c0d602971a80ddc44e9a2d2de16779697c8593747892ec68fb6295c0cd870",
+    "needed": [
+      "libmpbase.so",
+      "liblog.so",
+      "libc.so",
+      "libm.so",
+      "libdl.so"
+    ],
+    "source": "firmware:vendor:/lib64/libarcsoft_dualcam_refocus_preview.so",
+    "native_modified": false
+  },
+  "libarcsoft_lensstaindetection.so": {
+    "sha256": "6493006e34c08c0c6797bf55d66e52fe9657d047f78335195e428f6d220e028d",
+    "needed": [
+      "libmpbase.so",
+      "liblog.so",
+      "libc.so",
+      "libm.so",
+      "libdl.so"
+    ],
+    "source": "firmware:vendor:/lib64/libarcsoft_lensstaindetection.so",
+    "native_modified": false
+  },
+  "libarcsoft_panorama.so": {
+    "sha256": "5f3daa4a50d51e45fd337a1d57d7c418297b2fd3ab5dc7642cb73ef5efacd557",
+    "needed": [
+      "libmpbase.so",
+      "liblog.so",
+      "libc.so",
+      "libm.so",
+      "libdl.so"
+    ],
+    "source": "firmware:vendor:/lib64/libarcsoft_panorama.so",
+    "native_modified": false
+  },
+  "libarcsoft_portrait_distortion_correction.so": {
+    "sha256": "851132c9b95efc9a0bb198c30471061b363faba20c06e6ac404ee40f8a633b72",
+    "needed": [
+      "libmpbase.so",
+      "liblog.so",
+      "libc.so",
+      "libm.so",
+      "libdl.so"
+    ],
+    "source": "firmware:vendor:/lib64/libarcsoft_portrait_distortion_correction.so",
+    "native_modified": false
+  },
+  "libnoteengine.so": {
+    "sha256": "794c70efb0ee7216e3bff5a5cc5666ea1177fdc169ac6134b3ec3f92f05d420a",
+    "needed": [
+      "liblog.so",
+      "libdl.so",
+      "libz.so",
+      "libm.so",
+      "libc.so"
+    ],
+    "source": "firmware:vendor:/lib64/libnoteengine.so",
+    "native_modified": false
+  },
+  "libc++.so": {
+    "sha256": "2267f93b8b3c9d1967f1833d5f71c7312213c43bb291250cf772800763037fb9",
+    "needed": [
+      "libc.so",
+      "libm.so",
+      "libdl.so"
+    ],
+    "source": "target:/system/lib64/libc++.so",
+    "native_modified": false
+  }
+}
